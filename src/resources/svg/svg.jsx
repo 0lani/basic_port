@@ -67,25 +67,6 @@ const icons = {
   },
 }
 
-type IconType =
-  | "triangle"
-  | "circle"
-  | "arrowUp"
-  | "upDown"
-  | "box"
-  | "hexa"
-  | "cross"
-
-type SVGProps = {
-  stroke?: boolean,
-  color?: string | number | any,
-  width: number,
-  icon: IconType,
-  left: string,
-  top: string,
-  hiddenMobile?: boolean
-}
-
 const defaultProps = {
   stroke: false,
   hiddenMobile: false,
@@ -99,8 +80,8 @@ const SVG = ({
   left,
   top,
   hiddenMobile,
-}: SVGProps) => {
-  const style: object = {
+}) => {
+  const style = {
     position: `absolute`,
     stroke: stroke ? `currentColor` : `none`,
     fill: stroke ? `none` : `currentColor`,
