@@ -37,18 +37,11 @@ module.exports =  {
       }
     ],
     [
-      "babel-plugin-import", { 
-      "libraryName": "antd", 
-      "libraryDirectory": "lib"
-    }, 
-      "antd"
-    ],
-    [
-      "babel-plugin-import", { 
-        "libraryName": "antd-mobile", 
-        "libraryDirectory": "lib"
-      }, 
-      "antd-mobile"
+      "import", {
+        "libraryName": "antd", 
+        "libraryDirectory": "es",
+        "style": "css"
+      }
     ],
     // [
     //   // Brings in polyfills for es6+

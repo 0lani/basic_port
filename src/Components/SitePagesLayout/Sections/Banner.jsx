@@ -3,7 +3,7 @@ import React from "react"
 import { Button } from "antd"
 import QueueAnim from "rc-queue-anim"
 import BannerImage from "./Content/BannerImage"
-import "./Content/Banner.less"
+import "../../../resources/less/siteBanner.less"
 
 class Banner extends React.PureComponent {
   render() {

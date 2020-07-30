@@ -6,8 +6,9 @@ const WebpackMd5Hash = require("webpack-md5-hash")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
+// const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 
@@ -43,11 +44,11 @@ module.exports = ({ mode } = {
       hot: true,
       port: 3000
     },
-    devtool: "source-map",
+    devtool: "inline-source-map",
     target: 'web',
     resolve: {
       // helps resolve extensions in react
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.less']
     },
     optimization: {
       namedModules: true,
@@ -90,7 +91,8 @@ module.exports = ({ mode } = {
           test: /\.(js|jsx)$/,
           include: [
             path.resolve(__dirname, "src"),
-            path.resolve(__dirname, "node_modules", "react-spring"),
+            path.resolve(__dirname, "node_modules", "antd"),
+            path.resolve(__dirname, "node_modules", "react-spring")
           ],
           use: [{
             loader: "babel-loader",
@@ -102,6 +104,15 @@ module.exports = ({ mode } = {
                   }
                 }], '@babel/preset-react'
               ],
+              plugins: [
+                [
+                  'import', { 
+                    libraryName: "antd", 
+                    libraryDirectory: "es", 
+                    style: true 
+                  }
+                ]
+              ],
               cacheDirectory: true,
               cacheCompression: false
             }
@@ -109,11 +120,8 @@ module.exports = ({ mode } = {
         },
         // FOR BABEL TO TRANSPILE TYPESCRIPT CORRECTLY
         {
-          test: /\.tsx?$/,
-          include: [
-            path.resolve(__dirname, "src"),
-            path.resolve(__dirname, "node_modules", "react-spring"),
-          ],
+          test: /\.(ts|tsx)?$/,
+          exclude: /node_modules/,
           use: 'ts-loader',
         },
         {
@@ -127,22 +135,9 @@ module.exports = ({ mode } = {
           ]
 
         },
-        // {
-        //   // for loading scss files
-        //   test: /\.(scss)$/i,
-        //   use: [
-        //     'style-loader',
-        //     {
-        //       loader: 'css-loader',
-        //       options: {
-        //         importLoaders: 1
-        //       }
-        //     },
-        //     'sass-loader'
-        //   ]
-        // },
+        // for loading antd less files/modifying them
         {
-          test: /\.less$/,
+          test: /antd.*\.less$/,
           use: [
             {
               loader: "style-loader"
@@ -158,28 +153,54 @@ module.exports = ({ mode } = {
               loader: "less-loader",
               options: {
                 lessOptions: {
-                  javascriptEnabled: true
-                }
+                  javascriptEnabled: true,
+                  modifyVars: {// DEFAULTS FOR ANT DESIGN
+                    "layout-header-background": `#0e2339`,
+                    "layout-body-background": `80a1ea42`,
+                    "primary-color": `#1890ff`,
+                    "link-color": `#f5222d`,
+                    "success-color": `#52c41a`,
+                    "warning-color": `#faad14`,
+                    "error-color": `#f5222d`,
+                    "font-size-base": `13px`,
+                    "heading-color": `rgba(0, 0, 0, .85)`,
+                    "text-color": `#fff`,
+                    "text-color-secondary": `rgba(0, 0, 0, .45)`,
+                    "disabled-color": `rgba(0, 0, 0, .25)`,
+                    "border-radius-base": `4px`,
+                    "border-color-base": `#d9d9d9`,
+                    "box-shadow-base": `0 2px 8px rgba(0, 0, 0, .15)`
+                  },
+                },
               }
             }
           ]
+        },
+        { // for loading less files
+          test: /\.less$/,
+          exclude: /antd.*/,
+          use: [
+            MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", 
+            {
+              loader: 'less-loader',
+              options: {
+                lessOptions: {
+                  javascriptEnabled: true,
+                },
+              }
+            }
+          ],
         },
         {
           // for loading css files
           test: /\.(css)$/i,
           use: [
-            'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                importLoaders: 1
-              }
-            }
-          ]
+            MiniCssExtractPlugin.loader,
+            "css-loader", "postcss-loader",
+            ],
         },
         {
-          // for loading images/modules
+          // for loading smaller images/modules
           test: /\.(eot|woff|woff2|ttf)$/i,
           use: {
             loader: "url-loader",
@@ -220,12 +241,7 @@ module.exports = ({ mode } = {
               }
             },
           ],
-        },
-        // { 
-        //   enforce: "pre", 
-        //   test: /\.js$/, 
-        //   loader: "source-map-loader"
-        // }
+        }
       ]
     },
     plugins: [
@@ -244,6 +260,11 @@ module.exports = ({ mode } = {
           removeStyleLinkTypeAttributes: true,
           useShortDoctype: true
         }
+      }),
+      // CSS file to watch and rebuild on every change.
+      new MiniCssExtractPlugin({
+        filename: "styles.css",
+        chunkFilename: "styles.css"
       }),
       // reduces css duplication in bundle
       new OptimizeCssAssetsPlugin({

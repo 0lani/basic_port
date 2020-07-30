@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/",
     "target": "es5",
-    "module": "commonjs",
+    "module": "es6",
     "jsx": "react",
     "noImplicitAny": true,
     "sourceMap": true,
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "strictFunctionTypes": false
+    "strictFunctionTypes": false,
+    "preserveConstEnums": true,
+    "allowJs": true
   },
   "include": [
     "./src/**/**/*"
-  ]
+  ],
 }
 

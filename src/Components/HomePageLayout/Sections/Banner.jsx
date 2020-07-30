@@ -4,7 +4,7 @@ import { Icon, Row, Col } from "antd"
 import landingImg from "../../../resources/images/cyberworks-landing-image.png"
 import VisibilitySensor from "react-visibility-sensor"
 import { Spring } from "react-spring/renderprops"
-import "../../../resources/less/banner.less"
+import "../../../resources/less/homeBanner.less"
 
 const Banner = props => {
   const styles = {

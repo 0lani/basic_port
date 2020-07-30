@@ -32,8 +32,8 @@ class Header extends React.Component {
   }
 
   render() {
-    const { isFirstScreen, isMoblie, location } = this.props
-    const currentLocation = location.pathname.slice(1)
+    const { isFirstScreen, isMoblie} = this.props
+    const currentLocation = 'Home'
 
     const { menuVisible } = this.state
     const menuMode = isMoblie ? `inline` : `horizontal`
