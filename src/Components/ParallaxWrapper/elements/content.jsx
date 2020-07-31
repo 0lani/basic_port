@@ -1,5 +1,4 @@
 import React from "react"
-// @css css
 import { css } from "theme-ui"
 import { ParallaxLayer } from "react-spring/renderprops-addons";
 

@@ -30,6 +30,13 @@ module.exports =  {
     // Enables common js modules
     "@babel/plugin-transform-modules-commonjs",
     [
+      // for antd components
+      "@babel/plugin-proposal-decorators", 
+      { 
+        "legacy": true 
+      }
+    ],
+    [
       // Enables use of hoc
       "@babel/plugin-proposal-class-properties",
       {
@@ -37,9 +44,10 @@ module.exports =  {
       }
     ],
     [
+      // for antd styling
       "import", {
         "libraryName": "antd", 
-        "libraryDirectory": "es",
+        "libraryDirectory": "es", 
         "style": "css"
       }
     ],

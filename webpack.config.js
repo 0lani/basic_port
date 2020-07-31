@@ -200,27 +200,31 @@ module.exports = ({ mode } = {
             ],
         },
         {
-          // for loading smaller images/modules
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
+        {
+          // for loading smaller modules
           test: /\.(eot|woff|woff2|ttf)$/i,
           use: {
             loader: "url-loader",
             options: {
               limit: 8192,
               fallback: "file-loader",
-              name: "[path][name].[hash].[ext]"
+              name: "assets/[hash].[ext]"
             }
           }
         },
-        // for loading/compressing big images
+        // for loading/compressing images
         {
-          test: /\.(gif|png|jpe?g|svg|webp)$/i,
+          test: /\.(gif|png|jpe?g|webp)$/i,
           use: [
             'file-loader',
             'webp-loader',
             {
               loader: 'image-webpack-loader',
               options: {
-                name: "[path][name].[hash].[ext]",
+                name: "assets/[hash].[ext]",
                 mozjpeg: {
                   progressive: true,
                   quality: 65

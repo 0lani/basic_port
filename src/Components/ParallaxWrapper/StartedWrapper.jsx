@@ -1,12 +1,10 @@
-// @jsx jsx
+/** @jsx jsx */
 import { jsx } from "theme-ui"
 import Divider from "./elements/divider"
 import Content from "./elements/content"
 import SVG from "../../resources/svg/svg"
 import { UpDown, UpDownWide } from "../../resources/animations"
 import React from "react"
-
-const clip = { clipPath: `polygon(0 10%,100% 7%,100% 78%,0 77%)`}
 
 const StartedWrapper = ({
   offset,
@@ -18,7 +16,7 @@ const StartedWrapper = ({
       <div>
         <Divider
           bg="linear-gradient(to left, SlateBlue 0%, rgb(172, 209, 234) 100%)"
-          sx={clip}
+          sx={{ clipPath: `polygon(0 10%,100% 7%,100% 78%,0 77%)`}}
           speed={-0.2}
           offset={2.7}
           factor={9}

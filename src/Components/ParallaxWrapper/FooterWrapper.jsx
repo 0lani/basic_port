@@ -1,4 +1,4 @@
-// @jsx jsx
+/** @jsx jsx */
 import { jsx } from "theme-ui"
 import Divider from "./elements/divider"
 import Content from "./elements/content"
@@ -6,7 +6,6 @@ import SVG from "../../resources/svg/svg"
 import { UpDown, UpDownWide } from "../../resources/animations"
 import React from "react"
 
-const clip= { clipPath: `polygon(0 10%,100% 7%,100% 78%,0 77%)` };
 
 const FooterWrapper = ({
   offset,
@@ -17,7 +16,7 @@ const FooterWrapper = ({
     <React.Fragment>
       <div>
         <Divider
-          sx={clip}
+          sx={{ clipPath: `polygon(0 10%,100% 7%,100% 78%,0 77%)` }}
           speed={-0.2}
           offset={3.4}
           factor={factor}

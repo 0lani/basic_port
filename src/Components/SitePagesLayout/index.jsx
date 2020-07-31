@@ -1,7 +1,7 @@
 import React from "react"
-import Header from "../HomepageLayout/Sections/Header"
+import Header from "../HomePageLayout/Sections/Header"
 import Banner from "./Sections/Banner"
-import Footer from "../HomepageLayout/Sections/Footer"
+import Footer from "../HomePageLayout/Sections/Footer"
 
 const SitePagesLayout = ({ location }) => (
   <React.Fragment>

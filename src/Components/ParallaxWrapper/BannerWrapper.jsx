@@ -1,11 +1,8 @@
-// @jsx jsx
+/** @jsx jsx */
 import React from "react";
 import { jsx } from "theme-ui";
-//@ts-ignore
 import Divider from "./elements/divider";
-//@ts-ignore
 import Inner from "./elements/inner";
-//@ts-ignore
 import Content from "./elements/content";
 import SVG from "../../resources/svg/svg";
 import { UpDown, UpDownWide } from "../../resources/animations";

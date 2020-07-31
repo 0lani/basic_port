@@ -1,11 +1,8 @@
 import React from "react"
-// @jsx jsx
-import { jsx } from "theme-ui"
-
-const wh = { width: `100vw`, textAlign: `left` };
+import { css } from "theme-ui"
 
 const Inner = ({ className, children }) => (
-  <div className={className} sx={wh}>
+  <div className={className} css={css({width: `100vw`, textAlign: `left`})}>
     {children}
   </div>
 )
