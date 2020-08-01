@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import cyberworksLogo from "../../../resources/images/cyberworks-logo.png"
+// import cyberworksLogo from "../../../resources/images/cyberworks-logo.png"
 import "../../../resources/less/header.less"
 import classNames from "classnames"
 import PropTypes from "prop-types"
@@ -49,42 +49,19 @@ class Header extends React.Component {
         size="default"
         key="remote"
       >
-        Remote
+        contact{" "}<Badge dot />
       </Button>,
       <Menu
         mode={menuMode}
-        defaultSelectedKeys={[`${currentLocation}`]}
+        defaultSelectedKeys={[`Home`]}
         id="nav"
         key="nav"
       >
         <Menu.Item key="Home">
           <Link to="/Home">Home</Link>
         </Menu.Item>
-        <Menu.Item key="idea">
-          <Link to="/idea">Services</Link>
-        </Menu.Item>
-        <Menu.Item key="testominals">promotions</Menu.Item>
-        <Menu.Item key="contact">why cyberworks?</Menu.Item>
-        <Menu.Item key="about">contact</Menu.Item>
-        <Menu.Item key="Login">
-          <Link
-            to="#"
-            className="header-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Login
-            <span
-              style={{
-                display: `inline-block`,
-                position: `relative`,
-                top: -2,
-                width: 18,
-              }}
-            >
-              <Badge dot />
-            </span>
-          </Link>
+        <Menu.Item key="testominals">
+          <Link style={{color: "#fff"}} to="/projects">Projects</Link>
         </Menu.Item>
       </Menu>,
     ]
@@ -111,8 +88,7 @@ class Header extends React.Component {
         <Row>
           <Col lg={4} md={5} sm={24} xs={24}>
             <Link to="#" id="logo">
-              <img alt="logo" src={cyberworksLogo} />
-              <span className="logo-text">Cyber Works</span>
+              <span className="logo-text">Olonnye Taylor</span>
             </Link>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>

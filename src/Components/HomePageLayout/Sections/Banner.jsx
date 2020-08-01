@@ -53,7 +53,7 @@ const Banner = props => {
                       </p>
                       <span className="line" key="line" />
                       <div key="button1" className="start-button clearfix">
-                        <Link to="#started">Get Started</Link>
+                        <a href="#started">Get Started</a>
                       </div>
                       <Icon type="down" className="down" />
                     </Col>

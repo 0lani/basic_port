@@ -220,30 +220,30 @@ module.exports = ({ mode } = {
           test: /\.(gif|png|jpe?g|webp)$/i,
           use: [
             'file-loader',
-            'webp-loader',
-            {
-              loader: 'image-webpack-loader',
-              options: {
-                name: "assets/[hash].[ext]",
-                mozjpeg: {
-                  progressive: true,
-                  quality: 65
-                },
-                optipng: {
-                  enabled: true,
-                },
-                pngquant: {
-                  quality: [0.65, 0.90],
-                  speed: 4
-                },
-                gifsicle: {
-                  interlaced: false,
-                },
-                webp: {
-                  quality: 75
-                },
-              }
-            },
+            // 'webp-loader', remove for local dev
+            // {
+            //   loader: 'image-webpack-loader',
+            //   options: {
+            //     name: "assets/[hash].[ext]",
+            //     mozjpeg: {
+            //       progressive: true,
+            //       quality: 65
+            //     },
+            //     optipng: {
+            //       enabled: true,
+            //     },
+            //     pngquant: {
+            //       quality: [0.65, 0.90],
+            //       speed: 4
+            //     },
+            //     gifsicle: {
+            //       interlaced: false,
+            //     },
+            //     webp: {
+            //       quality: 75
+            //     },
+            //   }
+            // },
           ],
         }
       ]

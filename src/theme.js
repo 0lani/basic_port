@@ -22,6 +22,7 @@ export default {
     icon_pink: tailwind.colors.pink[5],
     icon_purple: tailwind.colors.purple[6],
     icon_green: tailwind.colors.green[4],
+    icon_teal: tailwind.colors.blue[3],
     modes: {
       light: {
         text: tailwind.colors.gray[8],

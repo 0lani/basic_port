@@ -24,7 +24,7 @@ const ServicesWrapper = ({
           {children}
         </Content>
 
-        <Divider speed={0.1} offset={offset} factor={factor}>
+        <Divider speed={0.1} offset={1.3} factor={factor}>
           <UpDown>
             <SVG icon="box" width={6} color="icon_brightest" left="85%" top="75%" />
             <SVG icon="upDown" width={8} color="icon_teal" left="70%" top="20%" />
@@ -34,15 +34,15 @@ const ServicesWrapper = ({
               stroke
               color="icon_orange"
               left="25%"
-              top="5%"
+              top="-44%%"
             />
             <SVG
               icon="circle"
               hiddenMobile
               width={24}
               color="icon_brightest"
-              left="17%"
-              top="60%"
+              left="13%"
+              top="0%"
             />
           </UpDown>
           <UpDownWide>
@@ -52,7 +52,7 @@ const ServicesWrapper = ({
               width={16}
               color="icon_green"
               left="20%"
-              top="90%"
+              top="190%"
             />
             <SVG
               icon="triangle"
@@ -102,24 +102,13 @@ const ServicesWrapper = ({
             left="4%"
             top="20%"
           />
-          <SVG icon="circle" width={12} color="icon_pink" left="80%" top="60%" />
-          <SVG icon="box" width={6} color="icon_orange" left="10%" top="10%" />
-          <SVG icon="box" width={12} color="icon_yellow" left="29%" top="26%" />
-          <SVG
-            icon="hexa"
-            width={16}
-            stroke
-            color="icon_red"
-            left="75%"
-            top="30%"
-          />
           <SVG
             icon="hexa"
             width={8}
             stroke
             color="icon_yellow"
             left="80%"
-            top="70%"
+            top="50%"
           />
         </Divider>
       </div>

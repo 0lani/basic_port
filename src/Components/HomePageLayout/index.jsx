@@ -25,18 +25,18 @@ const HomepageLayout = ({ location }) => {
             </BannerWrapper>
           </section>
           <section id="services">
-            <ServicesWrapper offset={1} factor={0.4}>
+            <ServicesWrapper offset={1} factor={1}>
               <Services />
             </ServicesWrapper>
           </section>
           <section id="started">
-            <StartedWrapper offset={0} factor={2.6}>
+            <StartedWrapper offset={1.2} factor={2.6}>
               <Started />
             </StartedWrapper>
           </section>
         </main>
 
-        <FooterWrapper offset={0} factor={0.5}>
+        <FooterWrapper offset={0} factor={1}>
           <footer id="footer">
             <Footer />
           </footer>

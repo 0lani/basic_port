@@ -16,6 +16,7 @@ const Divider = ({
   <ParallaxLayer
     className={className}
     css={css({
+      zIndex: -1,
       position: `absolute`,
       width: `full`,
       height: `full`,
