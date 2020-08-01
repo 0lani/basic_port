@@ -89,9 +89,9 @@ const SVG = ({
         fill: stroke ? `none` : `currentColor`,
         display: hiddenMobile ? hidden : `block`,
         color: color,
-        width,
-        left,
-        top,
+        width: width,
+        left: left,
+        top: top,
       }}
       viewBox={icons[icon].viewBox}
     >
@@ -100,6 +100,6 @@ const SVG = ({
   )
 }
 
-// SVG.defaultProps = defaultProps;
+SVG.defaultProps = defaultProps;
 
 export default SVG

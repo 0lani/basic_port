@@ -11,8 +11,10 @@ const Divider = ({
   fill,
   clipPath,
   children,
+  className
 }) => (
   <ParallaxLayer
+    className={className}
     css={css({
       position: `absolute`,
       width: `full`,

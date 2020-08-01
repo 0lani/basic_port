@@ -1,5 +1,4 @@
 import React from "react"
-
 import { Button } from "antd"
 import QueueAnim from "rc-queue-anim"
 import BannerImage from "./Content/BannerImage"

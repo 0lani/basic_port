@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: rgba(0, 0, 0, 0) linear-gradient(133deg, black, rgba(43, 159, 159, 0.82)) repeat scroll 0% 0%;
+#home {
+  height: 35vh;
+}
+
+#started {
+  margin-bottom: 100vh;
+}
+
+#footer {
+  margin-top: 125vh;
 }

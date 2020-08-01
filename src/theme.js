@@ -25,9 +25,9 @@ export default {
     modes: {
       light: {
         text: tailwind.colors.gray[8],
-        heading: tailwind.colors.black,
+        heading: tailwind.colors.white,
         primary: tailwind.colors.orange[7],
-        background: tailwind.colors.gray[1],
+        background: `rgba(0, 0, 0, 0) linear-gradient(133deg, black, rgba(43, 159, 159, 0.82)) repeat scroll 0% 0%`,
         divider: tailwind.colors.gray[2],
         textMuted: tailwind.colors.gray[6],
         icon_brightest: tailwind.colors.gray[2],
@@ -73,7 +73,7 @@ export default {
     root: {
       ...tailwind.styles.root,
       color: `text`,
-      background: `linear-gradient(133deg, black, rgb(181, 135, 255))`,
+      background: `rgba(0, 0, 0, 0) linear-gradient(133deg, black, rgba(43, 159, 159, 0.82)) repeat scroll 0% 0%`,
       a: {
         transition: `all 0.3s ease-in-out`,
         "&:hover": {

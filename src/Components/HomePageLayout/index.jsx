@@ -17,7 +17,7 @@ const HomepageLayout = ({ location }) => {
       <header>
         <Header location={location} />
       </header>
-      <Parallax pages={5} ref={parallax}>
+      <Parallax pages={6.8} ref={parallax}>
         <main>
           <section id="home">
             <BannerWrapper offset={0} factor={1}>
@@ -25,18 +25,18 @@ const HomepageLayout = ({ location }) => {
             </BannerWrapper>
           </section>
           <section id="services">
-            <ServicesWrapper offset={1} factor={2}>
+            <ServicesWrapper offset={1} factor={0.4}>
               <Services />
             </ServicesWrapper>
           </section>
           <section id="started">
-            <StartedWrapper offset={3.2} factor={3}>
+            <StartedWrapper offset={0} factor={2.6}>
               <Started />
             </StartedWrapper>
           </section>
         </main>
 
-        <FooterWrapper offset={4} factor={5}>
+        <FooterWrapper offset={0} factor={0.5}>
           <footer id="footer">
             <Footer />
           </footer>

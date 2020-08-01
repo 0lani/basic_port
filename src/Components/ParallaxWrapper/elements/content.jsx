@@ -7,8 +7,10 @@ const Content = ({
   offset,
   children,
   factor,
+  className
 }) => (
   <ParallaxLayer
+  className={className}
     css={css({
       padding: [3, 4, 4, 5],
       display: `flex`,

@@ -1,6 +1,5 @@
-/** @jsx jsx */
+
 import React from "react";
-import { jsx } from "theme-ui";
 import Divider from "./elements/divider";
 import Inner from "./elements/inner";
 import Content from "./elements/content";
@@ -148,7 +147,6 @@ const BannerWrapper = ({
           />
         </Divider>
         <Content
-          sx={{ variant: `texts.bigger` }}
           speed={0.4}
           offset={offset}
           factor={factor}
