@@ -52,9 +52,6 @@ const Banner = props => {
                         Harness the power of Modern Development
                       </p>
                       <span className="line" key="line" />
-                      <div key="button1" className="start-button clearfix">
-                        <a href="#started">Get Started</a>
-                      </div>
                       <Icon type="down" className="down" />
                     </Col>
                   </Row>

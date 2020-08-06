@@ -1,6 +1,6 @@
 @import "~antd/dist/antd.less";
 
-@text-color: black;
+@text-color: rgba(238, 179, 179, 0.85);
 
 .content-wrapper-started {
   width: 100vw;
@@ -29,16 +29,11 @@
   }
   .text-wrapper h2,
   .text-wrapper-bottom h2 {
-    font-size: 32px;
+    font-size: 24px;
     color: @text-color;
     font-weight: normal;
     white-space: nowrap;
-  }
-  .text-wrapper p {
-    margin: 10px 0 20px;
-    font-size: 16px;
-    line-height: 28px;
-    color: white;
+    text-shadow: 1px 1px 2px #43633b,0 0 1em #e5b21a,0 0 .2em #454574;
   }
   .left-text {
     padding-left: 10%;
@@ -58,4 +53,22 @@
   font-size: 16px;
   line-height: 28px;
   color: #999;
+}
+
+.started-content-wrapper { 
+  width: 510px;
+  margin: 0 auto;
+  background: linear-gradient(
+    180deg,
+    rgba(192, 247, 250, 0.4),
+    rgba(60, 133, 226, 0.1)
+  );
+  padding: 1rem;
+  border-radius: 5rem;
+    > p {
+      margin: 0 auto;
+      font-size: 16px;
+      color: white;
+      width: 410px;
+    }
 }

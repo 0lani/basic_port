@@ -17,7 +17,7 @@ const HomepageLayout = ({ location }) => {
       <header>
         <Header location={location} />
       </header>
-      <Parallax pages={6.8} ref={parallax}>
+      <Parallax pages={6.2} ref={parallax}>
         <main>
           <section id="home">
             <BannerWrapper offset={0} factor={1}>
@@ -35,12 +35,6 @@ const HomepageLayout = ({ location }) => {
             </StartedWrapper>
           </section>
         </main>
-
-        <FooterWrapper offset={0} factor={1}>
-          <footer id="footer">
-            <Footer />
-          </footer>
-        </FooterWrapper>
       </Parallax>
     </React.Fragment>
   )

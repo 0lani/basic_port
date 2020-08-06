@@ -16,8 +16,8 @@ class Banner extends React.PureComponent {
                 delay={300}
                 ease="easeOutQuart"
               >
-                <h1 key="h2">Services</h1>
-                <p key="p">One service to fit all your needs</p>
+                <h1 key="h2">Projects</h1>
+                <p key="p"><em>Due to an influx of work these are a little dated</em></p>
                 <span key="button">
                   <Button type="primary">Need Help?</Button>
                 </span>

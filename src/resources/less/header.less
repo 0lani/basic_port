@@ -9,11 +9,12 @@
 
 #header {
   position: absolute;
-  top: 0px;
+  top: -1%;
   left: 2%;
   z-index: 999;
   background: rgba(0, 0, 0, 0.65);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid white;
+  border-radius: 1rem;
   transition: border 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955),
     background 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   height: @header-height;
@@ -40,6 +41,10 @@
     font-size: 16px;
   }
 }
+
+.ant-menu-horizontal>.ant-menu-item>a {
+  color: #fff !important;
+ }
 
 #logo {
   float: left;
@@ -94,6 +99,10 @@
     color: @primary-color;
     font-weight: bold;
   }
+}
+
+.anti-selected {
+  border-bottom: hidden;
 }
 
 .component-select {
@@ -178,4 +187,101 @@
 }
 #nav .header-link {
   color: #fff;
+}
+
+.container {
+  font-family: Open Sans, sans-serif;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+
+  .span4 {
+    display: inline-block;
+  }
+}
+
+.details {
+  width: 12.6rem;
+  margin: 0.9rem auto 0;
+  background: #f04;
+  padding: 0.9rem 0;
+  border-radius: 0.5rem;
+
+  @media (min-width: 900px) {
+    [data-tool-tip]::before {
+      content: attr(data-tool-tip);
+      display: block;
+      position: absolute;
+      background: #303030;
+      padding: 1rem 3rem;
+      color: #f4f4f5;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      left: 50;
+      transform: scale(0);
+      transition: transform ease-out 150ms, left ease-out 150ms;
+    }
+
+    [data-tool-tip]:hover::before {
+      transform: scale(1);
+      left: 30rem;
+    }
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+}
+
+#social {
+  font-size: 0;
+  margin-top: 0.4rem;
+  margin-bottom: 3rem;
+
+  a {
+    color: #f04;
+    font-size: 2.4rem;
+    text-decoration: none;
+    margin: 0 0 0 1.5rem;
+  }
+
+  img {
+    width: 2.2rem;
+    margin: 0 0.5rem;
+
+    :hover {
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0);
+    }
+  }
+}
+
+#contact {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  display: inline-block;
+
+  .buffer-bottom {
+    margin-bottom: 1rem;
+  }
+
+  .pull-right {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.ant-modal, .ant-input {
+  color: black !important;
 }

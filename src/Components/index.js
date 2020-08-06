@@ -10,7 +10,7 @@ const App = () => {
       <Switch>
     
           <Route exact path="/" component={Landing}/>
-          <Route path="/services" component={OtherPage}/>
+          <Route path="/projects" component={OtherPage}/>
 
       </Switch>
     </BrowserRouter>
