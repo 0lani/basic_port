@@ -87,16 +87,26 @@
       align-items: center;
       padding-top: 0;
       text-align: left;
+      margin: 0 auto;
+      width: 95%;
     }
-    .home-banner-content-wrapper,
     .home-banner-image-wrapper {
-      width: 50%;
-      display: inline-block;
+      width: 99%;
+      height: 80vh;
+      position: relative;
+      z-index: 1;
+      box-shadow: 1px 2px 15px 5px #ca4a31;
     }
     .home-banner-content-wrapper {
-      height: 178px;
-      margin-bottom: 40px;
+      height: 3.4rem;
+      width: 15%;
+      z-index: 2;
+      position: absolute;
+      bottom: 1%;
+      background-color: hsla(0, 86.1%, 80.2%, 0.5);
+      padding: 1.7rem;
     }
+
     h1 {
       font-size: 38px;
       line-height: 46px;
@@ -105,10 +115,10 @@
       color: @titleColor;
     }
     p {
-      margin-bottom: 40px;
-      font-size: 20px;
+      font-size: 34px;
       line-height: 28px;
       color: @contentColor;
+      text-shadow: 2px 4px #558ABB;
     }
     span {
       display: inline-block;

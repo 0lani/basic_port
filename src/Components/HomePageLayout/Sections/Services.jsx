@@ -22,7 +22,7 @@ const Services = () => {
                 {props => (
                   <React.Fragment>
                     <div style={{ ...props }} className="home-serve">
-                      <h3 className="main-title">Services</h3>
+                      <h3 className="main-title">Available Services</h3>
                       <i className="line" />
                       {child(context, isVisible)}
                     </div>

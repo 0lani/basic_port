@@ -29,7 +29,7 @@ const Started = () => {
                         className="home-serve"
                       >
                         <Col span={8}>
-                          <h3 className="main-title">Getting Started</h3>
+                          <h3 className="main-title">Project Timeline</h3>
                           <i className="line" />
                         </Col>
                       </Row>
