@@ -51,6 +51,39 @@ module.exports =  {
         "style": "css"
       }
     ],
+    [
+      "import", {
+        "libraryName": "@ant-design/icons",
+        "libraryDirectory": "es/icons",
+        "camel2DashComponentName": false
+     },
+      "@ant-design/icons"
+    ],
+    ["prismjs", {
+      "languages": ["javascript", "css", "markup"],
+      "plugins": ["line-numbers"],
+      "theme": "twilight",
+      "css": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@Assets": "./src/resources",
+          "@Less": "./src/resources/less",
+          "@Images": "./src/resources/images",
+          "@Icons": "./src/resources/icons",
+          "@Components": "./src/Components",
+          "@HomePage": "./src/Components/HomePageLayout",
+          "@SitePage": "./src/Components/SitePagesLayout",
+          "@Parallax": "./src/Components/ParallaxWrapper",
+        }
+      }
+    ]
     // [
     //   // Brings in polyfills for es6+
     //   "@babel/plugin-transform-runtime",
@@ -86,19 +119,5 @@ module.exports =  {
     //     "pure": true
     //   }
     // ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          "./"
-        ],
-        "alias": {
-          "@Assets": "./src/assets",
-          "@Styles": "./src/assets/js/MUIstyles",
-          "@Components": "./src/Components",
-          "@constants": "./src/constants"
-        }
-      }
-    ]
   ]
 }

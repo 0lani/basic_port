@@ -1,8 +1,7 @@
 import React from "react"
-import { Button } from "antd"
 import QueueAnim from "rc-queue-anim"
 //import BannerImage from "./BannerImage"
-import BoxScene from "./Scene"
+import BoxScene from "./bannerContent/Scene"
 import "../../../resources/less/siteBanner.less"
 
 class Banner extends React.PureComponent {
@@ -24,7 +23,6 @@ class Banner extends React.PureComponent {
               </div>
             </div>
           </section>
-          <div style={{ background: `#564078`, height: `100vh` }}></div>
         </div>
       </React.Fragment>
     )

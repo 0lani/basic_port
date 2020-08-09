@@ -47,6 +47,9 @@ module.exports = ({ mode } = {
     devtool: "inline-source-map",
     target: 'web',
     resolve: {
+      alias: {
+        "@ant-design/icons$": path.resolve(__dirname, "./src/resources/icons/index.js")
+      },
       // helps resolve extensions in react
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.less']
     },

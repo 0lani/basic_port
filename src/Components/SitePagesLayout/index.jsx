@@ -1,6 +1,7 @@
 import React from "react"
 import Header from "../HomePageLayout/Sections/Header"
 import Banner from "./Sections/Banner"
+import Projects from './Sections/Projects'
 import Footer from "../HomePageLayout/Sections/Footer"
 
 const SitePagesLayout = ({ location }) => (
@@ -12,6 +13,9 @@ const SitePagesLayout = ({ location }) => (
       <section>
         <Banner />
       </section>
+      <article>
+        <Projects/>
+      </article>
     </main>
     <footer>
       <Footer />

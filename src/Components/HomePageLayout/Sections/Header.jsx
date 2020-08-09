@@ -4,8 +4,8 @@ import selfie from "../../../resources/images/File_001.png"
 import "../../../resources/less/header.less"
 // import classNames from "classnames"
 import PropTypes from "prop-types"
-import { Menu, Row, Col, Icon, Button, Popover, Badge, Modal, Form, Input, InputNumber } from "antd"
-import { GithubFilled, LinkedinFilled, MailOutlined } from '@ant-design/icons';
+import { Menu, Row, Col, Button, Badge, Modal, Form, Input} from "antd"
+import {github, linkedin} from "../../../resources/icons"
 
 class Header extends React.Component {
   static propTypes = {
@@ -126,8 +126,12 @@ class Header extends React.Component {
             <div class="center span4">
               <img alt="picture of developer" src={selfie} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '50%', border: '2px solid #68d391' }}/>
               <div id="social">
-                <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener"><LinkedinFilled style={{color: '#68d391'}}/></a> 
-                <a href="https://github.com/boredasfawk" target="_blank" rel="noopener"><GithubFilled style={{color: '#68d391'}}/></a> 
+                <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
+                  <span style={{color: '#68d391'}}>{github}</span>
+                </a> 
+                <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
+                  <span style={{color: '#68d391'}}>{linkedin}</span>
+                </a> 
               </div>
             </div>
 
