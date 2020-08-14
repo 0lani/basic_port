@@ -1,4 +1,5 @@
 import React from "react"
+import {Icon} from "antd"
 import QueueAnim from "rc-queue-anim"
 //import BannerImage from "./BannerImage"
 import BoxScene from "./bannerContent/Scene"
@@ -8,8 +9,8 @@ class Banner extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="home-page">
-          <section className={`home-layout-wrapper home-banner`}>
+        <section className="home-page banner">
+          <div className={`home-layout-wrapper home-banner`}>
             <div className="home-layout">
               <div className={`home-banner-image-wrapper`}>
                 <QueueAnim
@@ -22,8 +23,9 @@ class Banner extends React.PureComponent {
                 <BoxScene/>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+          <Icon type="down" className="down banner" />
+        </section>
       </React.Fragment>
     )
   }

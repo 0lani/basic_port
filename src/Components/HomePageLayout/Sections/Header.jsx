@@ -5,7 +5,7 @@ import "../../../resources/less/header.less"
 // import classNames from "classnames"
 import PropTypes from "prop-types"
 import { Menu, Row, Col, Button, Badge, Modal, Form, Input} from "antd"
-import {github, linkedin} from "../../../resources/icons"
+import {github as Git, linkedin as Linked} from "../../../resources/icons"
 
 class Header extends React.Component {
   static propTypes = {
@@ -127,10 +127,10 @@ class Header extends React.Component {
               <img alt="picture of developer" src={selfie} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '50%', border: '2px solid #68d391' }}/>
               <div id="social">
                 <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
-                  <span style={{color: '#68d391'}}>{github}</span>
+                  <span><Git style={{color: '#68d391'}}/></span>
                 </a> 
                 <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
-                  <span style={{color: '#68d391'}}>{linkedin}</span>
+                  <span><Linked style={{color: '#68d391'}}/></span>
                 </a> 
               </div>
             </div>

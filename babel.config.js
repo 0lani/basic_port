@@ -60,7 +60,7 @@ module.exports =  {
       "@ant-design/icons"
     ],
     ["prismjs", {
-      "languages": ["javascript", "css", "markup"],
+      "languages": ["javascript", "js"],
       "plugins": ["line-numbers"],
       "theme": "twilight",
       "css": true

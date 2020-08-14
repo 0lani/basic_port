@@ -9,13 +9,9 @@ const SitePagesLayout = ({ location }) => (
     <header>
       <Header location={location} />
     </header>
-    <main>
-      <section>
-        <Banner />
-      </section>
-      <article>
-        <Projects/>
-      </article>
+    <main style={{background: '#fff'}}>
+      <Banner />
+      <Projects/>
     </main>
     <footer>
       <Footer />
