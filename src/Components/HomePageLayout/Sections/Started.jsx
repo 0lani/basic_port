@@ -91,7 +91,9 @@ const child = context => {
                     span={16}
                     style={{ ...props, ...imageStyle }}
                     className="image-wrapper-started"
-                  />
+                  >
+                    <div className="clip-started" style={{ ...props}}/>  
+                  </Col>
                 )}
               </Spring>
               <Spring

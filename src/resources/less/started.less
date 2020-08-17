@@ -6,12 +6,25 @@
   width: 100vw;
   margin: auto;
   overflow: hidden;
+
   .image-wrapper-started {
     width: 65%;
     float: left;
     position: relative;
-  }
+    z-index: 1000;
 
+      .clip-started {
+        background-color: #ffffff4d;
+        -webkit-clip-path: polygon(0px 0px, 75% 0px, 90.68% 52.67%, 75% 100%, 0px 100%);
+        clip-path: polygon(0px 0px, 75% 0px, 90.68% 52.67%, 75% 100%, 0px 100%);
+        z-index: -1;
+        position: relative;
+        width: 80%;
+        height: 411px;
+        margin-top: 6.5rem;
+      }
+  }
+  
   .text-wrapper {
     width: 35%;
     float: left;

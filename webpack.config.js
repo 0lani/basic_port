@@ -2,8 +2,10 @@ require('dotenv').config()
 const path = require("path");
 const webpack = require("webpack");
 //const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackMd5Hash = require("webpack-md5-hash")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -48,7 +50,8 @@ module.exports = ({ mode } = {
     target: 'web',
     resolve: {
       alias: {
-        "@ant-design/icons$": path.resolve(__dirname, "./src/resources/icons/index.js")
+        "@ant-design/icons$": path.resolve(__dirname, "./src/resources/icons/index.js"),
+        "~": path.resolve(__dirname, "./src"),
       },
       // helps resolve extensions in react
       extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.less']
@@ -248,12 +251,19 @@ module.exports = ({ mode } = {
             //   }
             // },
           ],
+        },
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto",
         }
       ]
     },
     plugins: [
       // to keep dist folder clean on rebuild
       new CleanWebpackPlugin(),
+      // forces dev server to write bundles files to disk but still uses memory
+      new WriteFilePlugin(),
       // for html files
       new HtmlWebpackPlugin({
         inject: true,
@@ -267,6 +277,16 @@ module.exports = ({ mode } = {
           removeStyleLinkTypeAttributes: true,
           useShortDoctype: true
         }
+      }),
+      // copies files/folders to public folder 
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, "./public"), to: "public" },
+          {
+            from: "./public/favicon.ico",
+            to: "public",
+          },
+        ]
       }),
       // CSS file to watch and rebuild on every change.
       new MiniCssExtractPlugin({

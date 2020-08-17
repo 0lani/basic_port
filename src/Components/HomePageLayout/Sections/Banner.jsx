@@ -46,7 +46,7 @@ const Banner = props => {
                       className="banner-text-wrapper"
                     >
                       <h2 style={{ ...props, marginBottom: 0 }}>
-                        Node <p style={{ marginTop: 0 }}>Engineer</p>
+                        Javascript <p style={{ marginTop: 0 }}>Developer</p>
                       </h2>
                       <p style={{ fontSize: `1.1rem` }}>
                         Harness the power of Modern Development
