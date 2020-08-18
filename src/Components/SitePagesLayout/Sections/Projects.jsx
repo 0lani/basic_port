@@ -6,6 +6,7 @@ import lapImg from '../../../resources/images/laptop.png'
 import phoneImg from '../../../resources/images/mobile.jpg'
 
 const ProjectContainer = () => {
+  const [state, stateFunc] = useState({device1: null, device2: null, load: false});
 
   const { TabPane } = Tabs;
   const contentStyle = {
@@ -14,7 +15,17 @@ const ProjectContainer = () => {
     width: '95%',
     margin: '0px auto 3rem',
     borderRadius: '2rem',
-    padding: '4rem'
+    padding: '4rem',
+    border: '1px solid black'
+  };
+
+  const canvasStyle = {
+    height: '50vh',
+    width: '50vw',
+    margin: '0 auto',
+    position: 'absolute',
+    top: '10%',
+    left: '25%'
   };
 
   const code =`
@@ -45,51 +56,103 @@ const ProjectContainer = () => {
     }  
   `.trim();
 
-  const [state, stateFunc] = useState({laptop: false, iphone: false, deviceful: null})
-
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = "./public/deviceful.min.js";
-
-  document.body.appendChild(script);
-
-  (state.laptop) && (script.onload = () => {
-    console.log({window: window},{state}, 'after script loads')
-    const device1 = new window.Deviceful({
-      parent: '#main-laptop',
-      device: 'laptop',
-      screenshot: lapImg,
-      screenshotHeight: 2402
-    });
-    device1.mount();
-
-    const device2 = new window.Deviceful({
-      parent: '#docs-phone',
-      device: 'phone',
-      screenshot: phoneImg,
-      screenshotHeight: 2792
-    });
-    device2.mount();
-  })
+  const driveIn = [
+    {
+      object: "model", // Swivel the device from -30 to 0 degrees
+      move: "rotation",
+      axis: "y",
+      duration: 1500,
+      easing: "swingTo",
+      from: -30,
+    },
+    {
+      object: "camera", // Move the camera down by 3 units
+      move: "position",
+      axis: "y",
+      duration: 2000,
+      easing: "easeOutQuad",
+      from: 3,
+    },
+    {
+      object: "camera", // Move the camera forward by 20 units
+      move: "position",
+      axis: "z",
+      duration: 2000,
+      easing: "easeOutQuad",
+      from: 20,
+    },
+    {
+      object: "camera", // Rotate the camera on the X axis from -5 to 0 degrees
+      move: "rotation",
+      axis: "x",
+      duration: 2000,
+      easing: "easeOutQuad",
+      from: -5,
+    },
+  ];
 
   useEffect(() => {
     Prism.highlightAll();
-    const laptop = document.getElementById('main-laptop');
-    const iphone = document.getElementById('docs-phone');
 
-    console.log({window: window, laptop, iphone}, 'on mount')
+    let device1,device2;
+    const laptop = document.getElementById('main-laptop');
+
+    console.log({window: window, laptop}, 'on mount');
   
-    if(laptop) {
-      stateFunc({laptop, iphone})
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "./public/deviceful.min.js";
+
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if(laptop) {
+        console.log({window: window}, 'after script loads');
+        device1 = new Deviceful({
+          parent: '#main-laptop',
+          device: 'laptop',
+          screenshot: lapImg,
+          screenshotHeight: 2402,
+        });
+
+        device2 = new Deviceful({
+          parent: '#docs-phone',
+          device: 'phone',
+          screenshot: phoneImg,
+          screenshotHeight: 2792
+        });
+
+        device1.mount();
+        device2.mount();
+
+        stateFunc({device1: device1, device2: device2, load: true});
+      }
     }
   }, [stateFunc]);
 
   return (
     <React.Fragment>
       <article >
-        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true}>
+        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="2"
+          onTabClick={(key,event) => {
+          console.log({key}, {driveIn}, 'in tab function');
+          if((key === "1")){
+            state.device1.animate(driveIn);
+            state.device1.scroll({
+              direction: 'down', // 'up' or 'down'
+              duration: 3500, // in milliseconds
+              easing: 'easeOutQuad' // default
+            })
+          } else {
+            state.device1.scroll({
+              direction: 'up', // 'up' or 'down'
+              duration: 100, // in milliseconds
+              easing: 'easeOutQuad' // default
+            })
+          }
+        }}>
           <TabPane forceRender={true} tab="Site" key="1">
-            <div id="main-laptop"/>
+            <div id="main-laptop" style={canvasStyle}/>
           </TabPane>
           <TabPane forceRender={true} tab="Dependencies" key="2">
             <pre className="line-numbers">
@@ -98,22 +161,26 @@ const ProjectContainer = () => {
           </TabPane>
         </Tabs>
 
-        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true}>
+        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="2"
+          onTabClick={(key,event) => {
+            console.log({key}, {driveIn}, 'in tab function');
+            if((key === "1")) {
+              state.device2.animate(driveIn);
+              state.device2.scroll({
+                direction: 'down', // 'up' or 'down'
+                duration: 3500, // in milliseconds
+                easing: 'easeOutQuad' // default
+              })
+            } else {
+              state.device2.scroll({
+                direction: 'up', // 'up' or 'down'
+                duration: 100, // in milliseconds
+                easing: 'easeOutQuad' // default
+              })
+            }
+        }}>
           <TabPane forceRender={true} tab="Site" key="1">
-            <div id="docs-phone"/>
-          </TabPane>
-          <TabPane forceRender={true} tab="Dependencies" key="2">
-            <pre className="line-numbers">
-              <code className="language-js">{code}</code>
-            </pre>
-          </TabPane>
-        </Tabs>
-
-        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true}>
-          <TabPane tab="Site" key="1">
-            <p>Content of Tab Pane 2</p>
-            <p>Content of Tab Pane 2</p>
-            <p>Content of Tab Pane 2</p>
+            <div id="docs-phone" style={canvasStyle}/>
           </TabPane>
           <TabPane forceRender={true} tab="Dependencies" key="2">
             <pre className="line-numbers">

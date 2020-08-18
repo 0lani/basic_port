@@ -286,6 +286,14 @@ module.exports = ({ mode } = {
             from: "./public/favicon.ico",
             to: "public",
           },
+          {
+            from: "./public/laptop.glb",
+            to: "public",
+          },
+          {
+            from: "./public/phone.glb",
+            to: "public",
+          },
         ]
       }),
       // CSS file to watch and rebuild on every change.
