@@ -2,7 +2,7 @@ require('dotenv').config()
 const path = require("path");
 const webpack = require("webpack");
 //const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackMd5Hash = require("webpack-md5-hash")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WriteFilePlugin = require('write-file-webpack-plugin');
@@ -10,7 +10,6 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
-// const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 
@@ -37,16 +36,16 @@ module.exports = ({ mode } = {
       path: path.resolve(__dirname, 'dist'),
       filename: "index.[hash].js"
     },
-    devServer: {
-      contentBase: path.resolve(__dirname, 'dist'),
-      stats: {
-        children: false
-      },
-      compress: true,
-      hot: true,
-      port: 3000
-    },
-    devtool: "inline-source-map",
+    // devServer: {
+    //   contentBase: path.resolve(__dirname, 'dist'),
+    //   stats: {
+    //     children: false
+    //   },
+    //   compress: true,
+    //   hot: true,
+    //   port: 3000
+    // },
+    devtool: "none",
     target: 'web',
     resolve: {
       alias: {
@@ -226,30 +225,30 @@ module.exports = ({ mode } = {
           test: /\.(gif|png|jpe?g|webp)$/i,
           use: [
             'file-loader',
-            // 'webp-loader', remove for local dev
-            // {
-            //   loader: 'image-webpack-loader',
-            //   options: {
-            //     name: "assets/[hash].[ext]",
-            //     mozjpeg: {
-            //       progressive: true,
-            //       quality: 65
-            //     },
-            //     optipng: {
-            //       enabled: true,
-            //     },
-            //     pngquant: {
-            //       quality: [0.65, 0.90],
-            //       speed: 4
-            //     },
-            //     gifsicle: {
-            //       interlaced: false,
-            //     },
-            //     webp: {
-            //       quality: 75
-            //     },
-            //   }
-            // },
+            'webp-loader', // comment for local dev
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                name: "assets/[hash].[ext]",
+                mozjpeg: {
+                  progressive: true,
+                  quality: 65
+                },
+                optipng: {
+                  enabled: true,
+                },
+                pngquant: {
+                  quality: [0.65, 0.90],
+                  speed: 4
+                },
+                gifsicle: {
+                  interlaced: false,
+                },
+                webp: {
+                  quality: 75
+                },
+              }
+            },
           ],
         },
         {
@@ -278,24 +277,20 @@ module.exports = ({ mode } = {
           useShortDoctype: true
         }
       }),
-      // copies files/folders to public folder 
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: path.resolve(__dirname, "./public"), to: "public" },
-          {
-            from: "./public/favicon.ico",
-            to: "public",
-          },
-          {
-            from: "./public/laptop.glb",
-            to: "public",
-          },
-          {
-            from: "./public/phone.glb",
-            to: "public",
-          },
-        ]
-      }),
+      // copies files/folders to public folder  in local dev server
+     // new CopyWebpackPlugin({
+      //   patterns: [
+      //     { from: path.resolve(__dirname, "public"), to: "public" },
+      //     {
+      //       from: path.resolve(__dirname, "public", "favicon.ico"),
+      //       to: "public",
+      //     },
+      //     {
+      //       from: path.resolve(__dirname, "public", "laptop.glb"),
+      //       to: "public",
+      //     }
+      //   ]
+      // }),
       // CSS file to watch and rebuild on every change.
       new MiniCssExtractPlugin({
         filename: "styles.css",
@@ -316,7 +311,7 @@ module.exports = ({ mode } = {
         },
         canPrint: true
       }),
-      // for codesplitting chunks by component/route
+      // for codesplitting chunks by component/route on ssr
       // new ReactLoadablePlugin({
       //   filename: './dist/react-loadable.json',
       // }),
