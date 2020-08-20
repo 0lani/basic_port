@@ -277,20 +277,12 @@ module.exports = ({ mode } = {
           useShortDoctype: true
         }
       }),
-      // copies files/folders to public folder  in local dev server
-     // new CopyWebpackPlugin({
-      //   patterns: [
-      //     { from: path.resolve(__dirname, "public"), to: "public" },
-      //     {
-      //       from: path.resolve(__dirname, "public", "favicon.ico"),
-      //       to: "public",
-      //     },
-      //     {
-      //       from: path.resolve(__dirname, "public", "laptop.glb"),
-      //       to: "public",
-      //     }
-      //   ]
-      // }),
+      // copies files/folders to public folder  
+     new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, "public"), to: path.resolve(__dirname, "dist") },
+        ]
+      }),
       // CSS file to watch and rebuild on every change.
       new MiniCssExtractPlugin({
         filename: "styles.css",

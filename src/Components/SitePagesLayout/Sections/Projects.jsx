@@ -218,8 +218,6 @@ const ProjectContainer = () => {
 
     let device1,device2;
     const laptop = document.getElementById('main-laptop');
-
-    console.log({window: window, laptop}, 'on mount');
   
     const script = document.createElement('script');
     script.type = 'text/javascript';
@@ -229,7 +227,6 @@ const ProjectContainer = () => {
 
     script.onload = () => {
       if(laptop) {
-        console.log({window: window}, 'after script loads');
         device1 = new Deviceful({
           parent: '#main-laptop',
           device: 'laptop',
@@ -257,7 +254,6 @@ const ProjectContainer = () => {
       <article >
         <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="1"
           onTabClick={(key,event) => {
-          console.log({key}, {driveIn}, 'in tab function');
           if((key === "2")){
             state.device1.animate(driveIn);
             state.device1.scroll({
@@ -289,8 +285,7 @@ const ProjectContainer = () => {
         </Tabs>
 
         <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="1"
-          onTabClick={(key,event) => {
-            console.log({key}, {driveIn}, 'in tab function');
+          onTabClick={(key) => {
             if((key === "2")) {
               state.device2.animate(driveIn);
               state.device2.scroll({
