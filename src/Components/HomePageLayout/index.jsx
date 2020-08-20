@@ -3,12 +3,10 @@ import { Parallax } from "react-spring/renderprops-addons"
 import BannerWrapper from "../ParallaxWrapper/BannerWrapper.jsx"
 import ServicesWrapper from "../ParallaxWrapper/ServicesWrapper.jsx"
 import StartedWrapper from "../ParallaxWrapper/StartedWrapper.jsx"
-import FooterWrapper from "../ParallaxWrapper/FooterWrapper.jsx"
 import Header from "./Sections/Header.jsx"
 import Banner from "./Sections/Banner.jsx"
 import Services from "./Sections/Services.jsx"
 import Started from "./Sections/Started.jsx"
-import Footer from "./Sections/Footer.jsx"
 
 const HomepageLayout = ({ location }) => {
   const parallax = useRef(null)

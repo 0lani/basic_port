@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import selfie from "../../../resources/images/File_001.png"
+import selfieHeader from "../../../resources/images/File_001.png"
 import "../../../resources/less/header.less"
-// import classNames from "classnames"
 import PropTypes from "prop-types"
 import { Menu, Row, Col, Button, Badge, Modal, Form, Input} from "antd"
 import {github as Git, linkedin as Linked} from "../../../resources/icons"
@@ -80,6 +79,9 @@ class Header extends React.Component {
         <Menu.Item key="testominals">
           <Link to="/projects">Projects</Link>
         </Menu.Item>
+        <Menu.Item key="contact">
+          <Link to="/about">About Me</Link>
+        </Menu.Item>
       </Menu>,
     ]
     // <header> - className={headerClassName}
@@ -120,11 +122,11 @@ class Header extends React.Component {
           visible={this.state.isOpen}
           onCancel={() => this.setModal(this.state.isOpen)}
           footer={[<em>~Response Times Are Usually Within 48hrs</em>]}
-        >
+        > 
           <div class="container">
 
             <div class="center span4">
-              <img alt="picture of developer" src={selfie} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '50%', border: '2px solid #68d391' }}/>
+              <img alt="picture of developer" src={selfieHeader} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '50%', border: '2px solid #68d391' }}/>
               <div id="social">
                 <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
                   <span><Git style={{color: '#68d391'}}/></span>
