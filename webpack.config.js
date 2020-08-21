@@ -281,7 +281,11 @@ module.exports = ({ mode } = {
       // copies files/folders to public folder  
      new CopyWebpackPlugin({
         patterns: [
-          { from: path.resolve(__dirname, "public"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "env"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "laptop.glb"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "favicon.ico"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "deviceful.min.js"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "deviceful.min.js.map"), to: path.resolve(__dirname, "dist") },
         ]
       }),
       // CSS file to watch and rebuild on every change.

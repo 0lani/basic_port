@@ -221,9 +221,13 @@ const ProjectContainer = () => {
   
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = "./public/deviceful.min.js";
+    script.src = "./deviceful.min.js";
+
+    console.log({script}, 'before appending script')
 
     document.body.appendChild(script);
+
+    console.log({script}, {window: window}, 'before appending script')
 
     script.onload = () => {
       if(laptop) {
