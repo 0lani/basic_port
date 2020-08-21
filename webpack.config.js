@@ -1,8 +1,6 @@
 require('dotenv').config()
 const path = require("path");
 const webpack = require("webpack");
-//const autoprefixer = require('autoprefixer');
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackMd5Hash = require("webpack-md5-hash")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -12,8 +10,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
-
 
 // quickly decides which mode were in based on node env then destructures into object
 module.exports = ({ mode } = {
@@ -109,15 +105,6 @@ module.exports = ({ mode } = {
                     "node": "12"
                   }
                 }], '@babel/preset-react'
-              ],
-              plugins: [
-                [
-                  'import', { 
-                    libraryName: "antd", 
-                    libraryDirectory: "es", 
-                    style: true 
-                  }
-                ]
               ],
               cacheDirectory: true,
               cacheCompression: false
@@ -217,7 +204,7 @@ module.exports = ({ mode } = {
             options: {
               limit: 8192,
               fallback: "file-loader",
-              name: "assets/[hash].[ext]"
+              name: "assets/[name].[hash].[ext]"
             }
           }
         },
@@ -230,7 +217,7 @@ module.exports = ({ mode } = {
             {
               loader: 'image-webpack-loader',
               options: {
-                name: "assets/[hash].[ext]",
+                name: "assets/[name].[hash].[ext]",
                 mozjpeg: {
                   progressive: true,
                   quality: 65
@@ -281,17 +268,22 @@ module.exports = ({ mode } = {
       // copies files/folders to public folder  
      new CopyWebpackPlugin({
         patterns: [
-          { from: path.resolve(__dirname, "device", "env"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "nx.png"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "ny.png"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "nz.png"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "px.png"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "py.png"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "pz.png"), to: path.resolve(__dirname, "dist") },
           { from: path.resolve(__dirname, "device", "laptop.glb"), to: path.resolve(__dirname, "dist") },
           { from: path.resolve(__dirname, "device", "favicon.ico"), to: path.resolve(__dirname, "dist") },
-          { from: path.resolve(__dirname, "device", "deviceful.min.js"), to: path.resolve(__dirname, "dist") },
-          { from: path.resolve(__dirname, "device", "deviceful.min.js.map"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "edfb3e592fd8074a.min.js"), to: path.resolve(__dirname, "dist") },
+          { from: path.resolve(__dirname, "device", "edfb3e592fd8074a.min.js.map"), to: path.resolve(__dirname, "dist") },
         ]
       }),
       // CSS file to watch and rebuild on every change.
       new MiniCssExtractPlugin({
         filename: "styles.css",
-        chunkFilename: "styles.css"
+        chunkFilename: "[name].[hash].css"
       }),
       // reduces css duplication in bundle
       new OptimizeCssAssetsPlugin({
@@ -308,10 +300,6 @@ module.exports = ({ mode } = {
         },
         canPrint: true
       }),
-      // for codesplitting chunks by component/route on ssr
-      // new ReactLoadablePlugin({
-      //   filename: './dist/react-loadable.json',
-      // }),
       // to create manifest.json on build
       new WebpackManifestPlugin(),
       // took keep state on reload in dev server 

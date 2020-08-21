@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Projects from "./SitePagesLayout"
-import Landing from "./HomePageLayout"
-import About from "./AboutPagesLayout"
+import Loading from './Loading'
+
+const LandingComponent = lazy(() => import('./HomePageLayout'));
+const ProjectsComponent = lazy(() => import('./SitePagesLayout'));
+const AboutComponent = lazy(() => import('./AboutPagesLayout'));
+
+//TODO: make errorboundry for loading and a 404 page 
 
 const App = () => {
 
   return (
     <BrowserRouter>
       <Switch>
-    
-          <Route exact path="/" component={Landing}/>
-          <Route path="/projects" component={Projects}/>
-          <Route path="/about" component={About}/>
-
+        <Suspense fallback={Loading}>
+          <Route exact path="/" component={LandingComponent}/>
+          <Route path="/projects" component={ProjectsComponent}/>
+          <Route path="/about" component={AboutComponent}/>
+        </Suspense>
       </Switch>
     </BrowserRouter>
   )
