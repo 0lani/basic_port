@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  width: 100vw;
+}
+#loadingContainer{
+  height: 100vh;
+  width: 100vw;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+#loading {
+  margin: 0 auto;
+  background: #fff;
+  position: absolute;
+  top: 35%;
+}
+
 #home {
   height: 32vh;
 }
