@@ -5,7 +5,10 @@ import { Row, Col} from "antd"
 import context from "./data/startedData"
 import "../../../resources/less/started.less"
 
-const Started = () => {
+const Started = ({windowSize}) => {
+  const {width} = windowSize
+  const isMobile = width <= 896;
+
   return (
     <React.Fragment>
       <article className="home-serve-wrapper">
@@ -39,7 +42,7 @@ const Started = () => {
               )}
             </VisibilitySensor>
             <Row>
-              <Col span={24}>{child(context)}</Col>
+              <Col span={24}>{child(context, isMobile)}</Col>
             </Row>
           </Col>
         </Row>
@@ -48,8 +51,8 @@ const Started = () => {
   )
 }
 
-const child = context => {
-  return context.map(node => {
+const child = (context, mobile) => {
+  return context.map((node) => {
     const { 
       content, slug, title, acf: {
         started_img: {
@@ -58,10 +61,11 @@ const child = context => {
       }
     } = node;
 
-    const imageStyle = {
-      background: `url(${src}) no-repeat ${
-        slug % 2 === 1 ? "right" : "left"
-      } / 841px`,
+    const imageStyle = mobile ? 
+    { 
+      display: 'none' 
+    } : { 
+      background: `url(${src}) no-repeat ${slug % 2 === 1 ? "right" : "left" } / 841px`,
       height: `511px`,
     }
 

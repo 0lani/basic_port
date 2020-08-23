@@ -19,7 +19,7 @@ module.exports = ({ mode } = {
     "development"
 }) => {
   // puts current mode into variable
-  const isProduction = (mode === "production");
+  const isDevelopment = (mode === "development");
   // webpackmerge will help decide between our prod/dev configs on build and overwrite the correct one
   return {
     // sets mode for current env
@@ -33,16 +33,17 @@ module.exports = ({ mode } = {
       path: path.resolve(__dirname, 'dist'),
       filename: "index.[hash].js"
     },
-    // devServer: {
-    //   contentBase: path.resolve(__dirname, 'dist'),
-    //   stats: {
-    //     children: false
-    //   },
-    //   compress: true,
-    //   hot: true,
-    //   port: 3000
-    // },
-    devtool: "none",
+    devServer: isDevelopment ? {
+      contentBase: path.resolve(__dirname, 'dist'),
+      stats: {
+        children: false
+      },
+      compress: true,
+      hot: true,
+      port: 3000
+    } :
+    null,
+    devtool: isDevelopment ? "source-map" : "none",
     target: 'web',
     resolve: {
       alias: {

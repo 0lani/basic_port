@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SITEWIDE FIXES */
 #root {
   width: 100vw;
 }
@@ -30,4 +31,109 @@
 
 #footer {
   margin-top: 125vh;
+}
+
+.ant-menu-item > a {
+  color: #fff !important;
+}
+.nav-phone-icon {
+  color: #fff !important;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+/* Phones */
+/* horizontal */
+@media screen and (max-device-width : 896px) {
+    /* Header */
+  #nav {
+    float: none !important;
+    background: #233339; 
+  }
+  .nav-phone-icon {
+    float: right;
+    margin-top: 3%;
+    font-size: 1.3rem;
+    border: 1px solid #fff;
+    padding: .5rem;
+  }
+  .logo-text-wrapper {
+    width: 60%;
+  }
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #233339 !important;  
+  }
+  .ant-menu-item > a {
+    color: white;
+  }
+   /* skills */
+  #services {
+    height: 85vh;
+  }
+  /* started */
+  .content-wrapper-started .text-wrapper {
+    width: 100% !important;
+    left: 0px !important;
+  }
+  /* footer */
+  footer .bottom-bar {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0px !important;
+  }
+}
+
+/* vertical */
+@media screen and (max-device-width : 414px){
+  /* Header */
+  .nav-phone-icon {
+    margin-top: 8%;
+  }
+  /* Banner */
+  .banner-text-wrapper h2 {
+    font-size: 30px !important;
+  }
+  /* skills */
+  .home-serve {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .home-serve-wrapper .col {
+    width: 100%
+  }
+  .home-serve-wrapper .col .image {
+    width: 50vw !important;
+    height: 50vmin !important;
+  }
+  /* started */
+  .content-wrapper-started {
+    height: 70vh !important;
+    width: 100vw !important;
+  }
+  .started-content-wrapper {
+    width: 45vh !important;
+    border-radius: 0rem !important;
+  }
+  .started-content-wrapper > p {
+    width: 100% !important;
+  }
+  .content-wrapper-started .text-wrapper {
+    left: 0px !important;
+    width: 100% !important;
+  }
+  .page {
+    min-height: 0px !important;
+  }
+}
+
+/* Tablets  */
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+}
+
+/* Large screens  */
+@media screen  and (min-width : 1824px) {
+  /* Styles */
 }

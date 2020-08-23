@@ -2,17 +2,13 @@ import React from "react"
 import { Link } from "react-router-dom"
 import selfieHeader from "../../../resources/images/File_001.png"
 import "../../../resources/less/header.less"
-import PropTypes from "prop-types"
-import { Menu, Row, Col, Button, Badge, Modal, Form, Input} from "antd"
+import { Menu, Row, Col, Button, Badge, Modal, Form, Input, Popover, Icon} from "antd"
 import {github as Git, linkedin as Linked} from "../../../resources/icons"
 
 class Header extends React.Component {
-  static propTypes = {
-    isFirstScreen: PropTypes.bool,
-    isMoblie: PropTypes.bool,
-  }
+
   constructor(props) {
-    super();
+    super(props);
 
     this.state = {
       menuVisible: false,
@@ -21,26 +17,20 @@ class Header extends React.Component {
 
     this.setModal = this.setModal.bind(this);
     this.onFinish = this.onFinish.bind(this);
+    this.handleShowMenu = this.handleShowMenu.bind(this);
   }
 
-  // onMenuVisibleChange = visible => {
-  //   this.setState({
-  //     menuVisible: visible,
-  //   })
-  // }
-  // handleShowMenu = () => {
-  //   this.setState({
-  //     menuVisible: true,
-  //   })
-  // }
-  // handleHideMenu = () => {
-  //   this.setState({
-  //     menuVisible: false,
-  //   })
-  // }
+  handleShowMenu = () => {
+    this.setState({
+      menuVisible: !this.state.menuVisible,
+    })
+  }
 
-  setModal = (state) => {
-    this.setState({isOpen: !state})
+  setModal = (modal, nav) => {
+    this.setState({
+      isOpen: !modal, 
+      menuVisible: !nav
+    })
   }
 
   onFinish = values => {
@@ -48,30 +38,17 @@ class Header extends React.Component {
   };
 
   render() {
-    //fix->>const { isFirstScreen, isMoblie} = this.props
-    // fix->>const currentLocation = 'Home'
+    const { currentWindowSize } = this.props;
+    const isMobile = currentWindowSize.height <= 812;
 
-    // fix->>const { menuVisible } = this.state
-    // fix->>const menuMode = isMoblie ? `inline` : `horizontal`
-    /* fix->>const headerClassName = classNames({
-      clearfix: true,
-      "home-nav-white": !isFirstScreen,
-    })*/
-
+    const menuMode = isMobile ? `inline` : `horizontal`
+    
     const menu = [
-      <Button
-        className="header-remote-button"
-        ghost
-        size="default"
-        key="remote"
-        onClick={() => this.setModal(this.state.isOpen)}
-      >
-        contact{" "}<Badge dot />
-      </Button>,
       <Menu
-        mode={`horizontal`}
+        mode={menuMode}
         id="nav"
         key="nav"
+        onClick={this.handleShowMenu}
       >
         <Menu.Item key="Home">
           <Link to="/">Home</Link>
@@ -82,20 +59,29 @@ class Header extends React.Component {
         <Menu.Item key="contact">
           <Link to="/about">About Me</Link>
         </Menu.Item>
+        <Menu.Item>
+          <Button
+            className="header-remote-button"
+            ghost
+            size="default"
+            key="remote"
+            onClick={() => this.setModal(this.state.isOpen, this.state.menuVisible)}
+          >
+            Contact{" "}<Badge dot />
+          </Button>
+        </Menu.Item>
       </Menu>,
-    ]
-    // <header> - className={headerClassName}
+    ];
+ 
     return (
       <header id="header"> 
-        {/* {menuMode === `inline` ? (
+        {menuMode === `inline` ? (
           <Popover
             overlayClassName="popover-menu"
             placement="bottomRight"
             content={menu}
-            trigger="click"
-            visible={menuVisible}
+            visible={this.state.menuVisible}
             arrowPointAtCenter
-            onVisibleChange={this.onMenuVisibleChange}
           >
             <Icon
               className="nav-phone-icon"
@@ -103,18 +89,18 @@ class Header extends React.Component {
               onClick={this.handleShowMenu}
             />
           </Popover>
-        ) : null} */}
-        <Row>
-          <Col lg={4} md={5} sm={24} xs={24}>
+        ) : null}
+        <Row className="logo-text-wrapper">
+          <Col lg={4} md={10} sm={22} xs={24}>
             <Link to="/" id="logo">
               <span className="logo-text">Olonnye Taylor</span>
             </Link>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>
-            {/*menuMode === `horizontal` ? menu : null*/}
-            {menu}
+            {menuMode === `horizontal` ? menu : null}
           </Col>
         </Row>
+        
         <Modal
           id="contact"
           title="Contact Form"
@@ -136,10 +122,6 @@ class Header extends React.Component {
                 </a> 
               </div>
             </div>
-
-            {/* <div class="span8" id="contact">
-              <form  id="contact-form"
-            </div> */}
 
             <Form {...{
                 labelCol: {

@@ -5,7 +5,13 @@ import { Row, Col } from "antd"
 import context from "./data/servicesData"
 import "../../../resources/less/services.less"
 
-const Services = () => {
+const Services = ({windowSize}) => {
+  const {width} = windowSize
+  const isMobile = width <= 896;
+
+  const mobileTransform = isMobile ? `translateX(200px)` : `translateX(400px)`;
+  const mobileX = isMobile ? -200 : -400;
+
   return (
     <React.Fragment>
       <article className="home-serve-wrapper">
@@ -16,15 +22,15 @@ const Services = () => {
                 delay={300}
                 to={{
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? `translateX(0)` : `translateX(400px)`,
+                  transform: isVisible ? `translateX(0)` : mobileTransform,
                 }}
               >
                 {props => (
                   <React.Fragment>
                     <div style={{ ...props }} className="home-serve">
-                      <h3 className="main-title">Available Services</h3>
+                      <h3 className="main-title">Skills</h3>
                       <i className="line" />
-                      {child(context, isVisible)}
+                      {child(context, isVisible, mobileX)}
                     </div>
                   </React.Fragment>
                 )}
@@ -37,7 +43,7 @@ const Services = () => {
   )
 }
 
-const child = (context, isVisible) => (
+const child = (context, isVisible, isMobile) => (
   context.map(node => {
     const {
       content,
@@ -76,10 +82,10 @@ const child = (context, isVisible) => (
                 delay={300}
                 initial={null}
                 items={items}
-                from={{ opacity: 0, x: -400 }}
+                from={{ opacity: 0, x: isMobile }}
                 to={{
                   opacity: isVisible ? 1 : 0.25,
-                  x: isVisible ? 0 : -400,
+                  x: isVisible ? 0 : isMobile,
                 }}
               >
                 {item => ({ x, opacity }) => (

@@ -1,13 +1,9 @@
 import React from "react"
-import Header from "../HomePageLayout/Sections/Header"
 import Banner from "./Banner"
 import Footer from "../HomePageLayout/Sections/Footer"
 
-const SitePagesLayout = ({ location }) => (
+const SitePagesLayout = () => (
   <React.Fragment>
-    <header>
-      <Header location={location} />
-    </header>
     <main style={{background: '#fff'}}>
       <Banner />
     </main>

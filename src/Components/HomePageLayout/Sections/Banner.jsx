@@ -6,24 +6,36 @@ import VisibilitySensor from "react-visibility-sensor"
 import { Spring } from "react-spring/renderprops"
 import "../../../resources/less/homeBanner.less"
 
-const styles = {
-  articleStyles: {
-    backgroundImage: `url(${landingImg})`,
-    backgroundPosition: `center`,
-    backgroundSize: `cover`,
-    backgroundRepeat: `no-repeat`,
-  },
-  rowStyles: { marginRight: `40vw` },
-  colStyles: { marginTop: `17vh`, fontSize: `1.1rem` },
-  toProps: isVisible => {
-    return {
-      opacity: isVisible ? 1 : 0,
-      transform: isVisible ? `translateX(0)` : `translateX(100px)`,
-    }
-  },
-}
+const Banner = ({ windowSize }) => {
+  const {width} = windowSize
+  const isMobile = width <= 896;
+  const isMobileHorizontal = (width > 414 && width <= 896);
+  
+  const horizontalPosition = isMobileHorizontal ? `center left` : `left center`;
+  const horizontalMR = isMobileHorizontal ? `27vw` : `10vw`;
+  const horizontalMT = isMobileHorizontal ? `45vh` : `30vh`;
 
-const Banner = props => {
+  const styles = {
+    articleStyles: {
+      backgroundImage: `url(${landingImg})`,
+      backgroundPosition: isMobile ? horizontalPosition : `center center`,
+      backgroundSize: `cover`,
+      backgroundRepeat: `no-repeat`,
+    },
+    rowStyles: { 
+      marginRight: isMobile ? horizontalMR : `40vw` 
+    },
+    colStyles: { 
+      marginTop: isMobile ? horizontalMT : `17vh`, 
+      fontSize: isMobile ? `1rem` : `1.1rem` 
+    },
+    toProps: isVisible => {
+      return {
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? `translateX(0)` : `translateX(100px)`,
+      }
+    },
+  }
 
   return (
     <React.Fragment>
