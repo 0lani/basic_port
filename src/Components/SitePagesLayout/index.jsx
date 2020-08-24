@@ -3,16 +3,21 @@ import Banner from "./Sections/Banner"
 import Projects from './Sections/Projects'
 import Footer from "../HomePageLayout/Sections/Footer"
 
-const SitePagesLayout = () => (
-  <React.Fragment>
-    <main style={{background: '#fff'}}>
-      <Banner />
-      <Projects/>
-    </main>
-    <footer>
-      <Footer />
-    </footer>
-  </React.Fragment>
-)
+const SitePagesLayout = ({ currentWindowSize }) => {
+  const {width} = currentWindowSize
+  const isMobile = width <= 896;
+
+  return (
+    <React.Fragment>
+      <main style={{background: '#fff'}}>
+        <Banner />
+        <Projects mobile={isMobile}/>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </React.Fragment>
+  )
+}
 
 export default SitePagesLayout

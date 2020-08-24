@@ -7,7 +7,7 @@ import Banner from "./Sections/Banner.jsx"
 import Services from "./Sections/Services.jsx"
 import Started from "./Sections/Started.jsx"
 
-const HomepageLayout = ({currentWindowSize }) => {
+const HomepageLayout = ({ currentWindowSize }) => {
   const parallax = useRef(null)
   const {width} = currentWindowSize
   const isMobile = width <= 896;

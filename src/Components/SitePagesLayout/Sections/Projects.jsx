@@ -5,29 +5,55 @@ import "../../../resources/less/projects.less"
 import lapImg from '../../../resources/images/laptop.png'
 import phoneImg from '../../../resources/images/mobile.jpg'
 
-const ProjectContainer = () => {
+const ProjectContainer = ({mobile}) => {
   const [state, stateFunc] = useState({device1: null, device2: null, load: false});
-
+  
+  let position, type, canvasStyle, contentStyle;
+  if(mobile){
+    // mobile styles
+    position = "top"
+    type = "line"
+    contentStyle = {
+      backgroundColor: 'rgb(228, 228, 228)', 
+      height: '110vh',
+      width: '95%',
+      margin: '0px auto 3rem',
+      borderRadius: '1rem',
+      padding: '1rem',
+      border: '1px solid black'
+    }
+    canvasStyle = { 
+      height: '55vh',
+      width: '85vw',
+      margin: '0px auto',
+      position: 'absolute',
+      top: '10%',
+      left: '5%'
+    }
+  } else {
+    // desktop styles
+    position = "left"
+    type = "card"
+    contentStyle = {
+      backgroundColor: 'rgb(228, 228, 228)', 
+      height: '100vh',
+      width: '95%',
+      margin: '0px auto 3rem',
+      borderRadius: '2rem',
+      padding: '4rem',
+      border: '1px solid black'
+    }
+    canvasStyle = {
+      height: '50vh',
+      width: '50vw',
+      margin: '0 auto',
+      position: 'absolute',
+      top: '10%',
+      left: '25%'
+    }
+  }
   const { TabPane } = Tabs;
-  let contentStyle = {
-    backgroundColor: 'rgb(228, 228, 228)', 
-    height: '100vh',
-    width: '95%',
-    margin: '0px auto 3rem',
-    borderRadius: '2rem',
-    padding: '4rem',
-    border: '1px solid black'
-  };
-
-  const canvasStyle = {
-    height: '50vh',
-    width: '50vw',
-    margin: '0 auto',
-    position: 'absolute',
-    top: '10%',
-    left: '25%'
-  };
-
+ 
   const codeResort =`
   {
     "dependencies": {
@@ -252,7 +278,7 @@ const ProjectContainer = () => {
   return (
     <React.Fragment>
       <article >
-        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="1"
+        <Tabs style={contentStyle} tabPosition={position} type={type} keyboard={true} defaultActiveKey="1"
           onTabClick={(key,event) => {
           if((key === "2")){
             state.device1.animate(driveIn);
@@ -284,7 +310,7 @@ const ProjectContainer = () => {
           </TabPane>
         </Tabs>
 
-        <Tabs style={contentStyle} tabPosition="left" type="card" keyboard={true} defaultActiveKey="1"
+        <Tabs style={contentStyle} tabPosition={position} type={type} keyboard={true} defaultActiveKey="1"
           onTabClick={(key) => {
             if((key === "2")) {
               state.device2.animate(driveIn);
