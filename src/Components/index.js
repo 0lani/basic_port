@@ -19,6 +19,14 @@ const App = () => {
   }
   
   useEffect(() => {
+    // Hides pre-load screen
+    const ele = document.getElementById('ipl-progress-indicator');
+    if(ele){
+      // fade out
+      ele.classList.add('available')
+      // remove from DOM
+      ele.outerHTML = ''
+    }
     // Function for event listner
     const resizer = () => handleResize(setWindowSize);
     // Add event listener

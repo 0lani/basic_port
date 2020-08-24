@@ -5,11 +5,12 @@ import theme from './theme'
 import { ThemeProvider } from 'theme-ui'
 import App from "./Components/index";
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
+
 
 ReactDOM.render( 
   <ThemeProvider theme={theme}>
-    <App/>
+    <App />
   </ThemeProvider>, 
   rootElement
-  );
+)
