@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import selfieHeader from "../../../resources/images/File_001.png"
 import "../../../resources/less/header.less"
 import { Menu, Row, Col, Button, Badge, Modal, Form, Input, Popover, Icon} from "antd"
-import {github as Git, linkedin as Linked} from "../../../resources/icons"
+import {github as Git} from "../../../resources/icons"
+//linkedin as Linked
 
 class Header extends React.Component {
 
@@ -117,9 +118,9 @@ class Header extends React.Component {
                 <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
                   <span><Git style={{color: '#68d391'}}/></span>
                 </a> 
-                <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
+                {/* <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
                   <span><Linked style={{color: '#68d391'}}/></span>
-                </a> 
+                </a>  */}
               </div>
             </div>
 

@@ -4,7 +4,8 @@ import QueueAnim from "rc-queue-anim"
 import BannerImage from "./BannerImage"
 import selfie from "../../resources/images/selfie.png"
 import "../../resources/less/about.less"
-import {github as Git, linkedin as Linked} from "../../resources/icons"
+import {github as Git} from "../../resources/icons"
+//linkedin as Linked
 
 const Banner = ({mobile}) => {
   let title;
@@ -25,12 +26,12 @@ const Banner = ({mobile}) => {
                   <div className="center span4">
                     <img className="about" alt="picture of developer" src={selfie} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '21%' }}/>
                     <div id="about-social">
-                      <a href="https://www.linkedin.com/in/olonnye" target="_blank" rel="noopener">
+                      <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
                         <span><Git style={{color: '#68d391'}}/></span>
                       </a> 
-                      <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
+                      {/* <a href="https://www.linkedin.com/in/olonnye " target="_blank" rel="noopener">
                         <span><Linked style={{color: '#68d391'}}/></span>
-                      </a> 
+                      </a>  */}
                     </div>
                   </div>
 
