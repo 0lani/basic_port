@@ -16,7 +16,7 @@ const context = [
   },
   {
     content:
-      "The second stage will be implementing the most import stories we've first and testing them to make sure their flawless. This stage will also give you incrementally updates to help decide if the current project is on track, based on your time frame.",
+      "The second stage is deciding which stories are the most important and implementing those first while testing them to make sure they're flawless. This stage will also give you incrementally updates to help decide if the current project is on track with your time frame.",
     slug: "testing",
     title: "Design Implementation",
     acf: {
@@ -27,7 +27,7 @@ const context = [
   },
   {
     content:
-      "The third stage will simply be presenting the final project that succefully passed the previous stages.",
+      "The third stage will simply be presenting you the final project that succefully passed the previous stages.",
     slug: "presentation",
     title: "Project Presentation",
     acf: {
