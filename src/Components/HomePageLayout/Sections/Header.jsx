@@ -151,7 +151,7 @@ class Header extends React.Component {
               }} 
               name="nest-messages" 
               action="https://formspree.io/oloagency@gmail.com" method="POST" 
-              onFinish={(evee) => this.onSubmitForm(evee)}
+              onFinish={this.onSubmitForm}
             >
               <Form.Item
                 name="name"
@@ -198,12 +198,10 @@ class Header extends React.Component {
               <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
                   Close
                 </Button>
-                <Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    {status === "SUCCESS" ? 'Thanks!' : 'Submit'}
-                    {status === "ERROR" && 'Ooops! There was an error.'}
-                  </Button>
-                </Form.Item>
+                <Button type="primary" htmlType="submit">
+                  {this.state.status === "SUCCESS" ? 'Thanks!' : 'Submit'}
+                  {this.state.status === "ERROR" && 'Ooops! There was an error.'}
+                </Button>
               </Form.Item>
             </Form>
           
