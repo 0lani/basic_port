@@ -37,7 +37,7 @@ class Header extends React.Component {
 
   onSubmitForm = evee => {
     this.setModal(this.state.isOpen);
-    
+
     const form = evee.target;
     const data = new FormData(form);
     const xhr = new XMLHttpRequest();
@@ -194,14 +194,16 @@ class Header extends React.Component {
                 />
               </Form.Item>
 
-              <Form.Item wrapperCol={{ span: 16, offset: 8 }}>
+              <Form.Item name="Field" label=" " wrapperCol={{ span: 16, offset: 8 }}>
               <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
                   Close
                 </Button>
-                <Button type="primary" htmlType="submit">
-                  {this.state.status === "SUCCESS" ? 'Thanks!' : 'Submit'}
-                  {this.state.status === "ERROR" && 'Ooops! There was an error.'}
-                </Button>
+                <Form.Item  name="field" noStyle >
+                  <Button type="primary" htmlType="submit">
+                    {this.state.status === "SUCCESS" ? 'Thanks!' : 'Submit'}
+                    {this.state.status === "ERROR" && 'Ooops! There was an error.'}
+                  </Button>
+                </Form.Item>
               </Form.Item>
             </Form>
           
