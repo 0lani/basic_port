@@ -151,9 +151,10 @@ class Header extends React.Component {
               }} 
               name="nest-messages" 
               action="https://formspree.io/oloagency@gmail.com" method="POST" 
+              onFinish={(evee) => this.onSubmitForm(evee)}
             >
               <Form.Item
-                name={['name']}
+                name="name"
                 label="Name"
                 rules={[
                   {
@@ -169,7 +170,7 @@ class Header extends React.Component {
                 />
               </Form.Item>
               <Form.Item
-                name={['email']}
+                name="email"
                 label="Email"
                 rules={[
                   {
@@ -185,7 +186,7 @@ class Header extends React.Component {
                 />
               </Form.Item>
 
-              <Form.Item name={['message']} label="Message">
+              <Form.Item name="message" label="Message">
                 <Input.TextArea 
                   style={{
                     width: '87%',
@@ -197,7 +198,7 @@ class Header extends React.Component {
               <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
                   Close
                 </Button>
-                <Button type="primary" htmlType="submit" onClick={() => this.onSubmitForm()}>
+                <Button type="primary" htmlType="submit">
                   {status === "SUCCESS" ? 'Thanks!' : 'Submit'}
                   {status === "ERROR" && 'Ooops! There was an error.'}
                 </Button>
