@@ -36,7 +36,8 @@ class Header extends React.Component {
   }
 
   onSubmitForm = evee => {
-    evee.preventDefault();
+    this.setModal(this.state.isOpen);
+    
     const form = evee.target;
     const data = new FormData(form);
     const xhr = new XMLHttpRequest();
@@ -52,7 +53,6 @@ class Header extends React.Component {
       }
     };
     xhr.send(data);
-    this.setModal(this.state.isOpen)
   }
 
   render() {
