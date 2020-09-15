@@ -13,7 +13,8 @@ class Header extends React.Component {
 
     this.state = {
       menuVisible: false,
-      isOpen: false
+      isOpen: false,
+      status: null
     }
 
     this.setModal = this.setModal.bind(this);
@@ -34,9 +35,25 @@ class Header extends React.Component {
     })
   }
 
-  onFinish = values => {
-    console.log(values);
-  };
+  onSubmitForm = evee => {
+    evee.preventDefault();
+    const form = evee.target;
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        form.reset();
+        this.setState({ status: "SUCCESS" });
+      } else {
+        this.setState({ status: "ERROR" });
+      }
+    };
+    xhr.send(data);
+    this.setModal(this.state.isOpen)
+  }
 
   render() {
     const { currentWindowSize } = this.props;
@@ -137,7 +154,7 @@ class Header extends React.Component {
               onSubmit={this.onFinish}
             >
               <Form.Item
-                name={['user', 'name']}
+                name={['name']}
                 label="Name"
                 rules={[
                   {
@@ -153,7 +170,7 @@ class Header extends React.Component {
                 />
               </Form.Item>
               <Form.Item
-                name={['user', 'email']}
+                name={['email']}
                 label="Email"
                 rules={[
                   {
@@ -169,7 +186,7 @@ class Header extends React.Component {
                 />
               </Form.Item>
 
-              <Form.Item name={['user', 'message']} label="Message">
+              <Form.Item name={['message']} label="Message">
                 <Input.TextArea 
                   style={{
                     width: '87%',
@@ -181,8 +198,9 @@ class Header extends React.Component {
               <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
                   Close
                 </Button>
-                <Button type="primary" htmlType="submit" onClick={() => this.setModal(this.state.isOpen)}>
-                  Submit
+                <Button type="primary" htmlType="submit" onClick={this.onSubmitForm}>
+                  {status === "SUCCESS" ? 'Thanks!' : 'Submit'}
+                  {status === "ERROR" && 'Ooops! There was an error.'}
                 </Button>
               </Form.Item>
             </Form>
