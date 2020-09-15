@@ -18,6 +18,7 @@ class Header extends React.Component {
     }
 
     this.setModal = this.setModal.bind(this);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
     this.handleShowMenu = this.handleShowMenu.bind(this);
   }
 
