@@ -14,7 +14,7 @@ class Header extends React.Component {
     this.state = {
       menuVisible: false,
       isOpen: false,
-      status: null
+      status: false
     }
 
     this.setModal = this.setModal.bind(this);
