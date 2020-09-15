@@ -198,10 +198,12 @@ class Header extends React.Component {
               <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
                   Close
                 </Button>
-                <Button type="primary" htmlType="submit">
-                  {status === "SUCCESS" ? 'Thanks!' : 'Submit'}
-                  {status === "ERROR" && 'Ooops! There was an error.'}
-                </Button>
+                <Form.Item>
+                  <Button type="primary" htmlType="submit">
+                    {status === "SUCCESS" ? 'Thanks!' : 'Submit'}
+                    {status === "ERROR" && 'Ooops! There was an error.'}
+                  </Button>
+                </Form.Item>
               </Form.Item>
             </Form>
           
