@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import selfieHeader from "../../../resources/images/File_001.png"
 import "../../../resources/less/header.less"
-import { Menu, Row, Col, Button, Badge, Modal, Form, Input, Popover, Icon} from "antd"
+import { Menu, Row, Col, Button, Badge, Modal, Popover, Icon, Input} from "antd"
 import {github as Git} from "../../../resources/icons"
 //linkedin as Linked
 
@@ -10,16 +10,20 @@ class Header extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      menuVisible: false,
-      isOpen: false,
-      status: false
-    }
+    this.formRef = React.createRef();
+    this.formNameRef = React.createRef();
+    this.formEmailRef = React.createRef();
+    this.formMessageRef = React.createRef();
 
     this.setModal = this.setModal.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
     this.handleShowMenu = this.handleShowMenu.bind(this);
+
+    this.state = {
+      menuVisible: false,
+      isOpen: false,
+      status: false,
+    }
   }
 
   handleShowMenu = () => {
@@ -36,24 +40,29 @@ class Header extends React.Component {
   }
 
   onSubmitForm = evee => {
-    this.setModal(this.state.isOpen);
+    evee.persist();
+    evee.preventDefault();
 
     const form = evee.target;
     const data = new FormData(form);
     const xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action);
+
+    console.log({evee}, "in form")
+
+    xhr.open("POST", "https://formspree.io/oloagency@gmail.com");
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onreadystatechange = () => {
       if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-        form.reset();
-        this.setState({ status: "SUCCESS" });
-      } else {
-        this.setState({ status: "ERROR" });
-      }
     };
     xhr.send(data);
+
+    this.formNameRef.current.state.value = '';
+    this.formEmailRef.current.state.value = '';
+    this.formMessageRef.current.state.value = '';
+    
+    this.setModal(this.state.isOpen)
   }
+
 
   render() {
     const { currentWindowSize } = this.props;
@@ -127,9 +136,9 @@ class Header extends React.Component {
           onCancel={() => this.setModal(this.state.isOpen)}
           footer={[<em>~Response Times Are Usually Within 48hrs</em>]}
         > 
-          <div class="container">
+          <div className="container">
 
-            <div class="center span4">
+            <div className="center span4">
               <img alt="picture of developer" src={selfieHeader} style={{maxWidth: '140px', margin: '0 auto', borderRadius: '50%', border: '2px solid #68d391' }}/>
               <div id="social">
                 <a href="https://github.com/boredasfawk" target="_blank" rel="noopener">
@@ -141,71 +150,37 @@ class Header extends React.Component {
               </div>
             </div>
 
-            <Form {...{
-                labelCol: {
-                  span: 8,
-                },
-                wrapperCol: {
-                  span: 16,
-                }
-              }} 
-              name="nest-messages" 
-              action="https://formspree.io/oloagency@gmail.com" method="POST" 
-              onFinish={this.onSubmitForm}
+            <form
+              className="contactForm"
+              ref={this.formRef}
+              onSubmit={(evee) => this.onSubmitForm(evee)}
+              action="https://formspree.io/oloagency@gmail.com"
+              method="POST"
             >
-              <Form.Item
+              <Input 
+                className="formInput"
+                ref={this.formNameRef}
+                type="text"
+                placeHolder="Name" 
                 name="name"
-                label="Name"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your Name!',
-                  },
-                ]}
-              >
-                <Input
-                  style={{
-                    width: '87%',
-                  }}
-                />
-              </Form.Item>
-              <Form.Item
-                name="email"
-                label="Email"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your email!',
-                  },
-                ]}
-              >
-                <Input
-                  style={{
-                    width: '87%',
-                  }}
-                />
-              </Form.Item>
+              />
 
-              <Form.Item name="message" label="Message">
-                <Input.TextArea 
-                  style={{
-                    width: '87%',
-                  }}
-                />
-              </Form.Item>
+              <Input 
+                className="formInput"
+                ref={this.formEmailRef}
+                type="email" 
+                placeHolder="Email"
+                name="_replyto"
+              />
 
-              <Form.Item name="Field" label=" " wrapperCol={{ span: 16, offset: 8 }}>
-              <Button key="back" style={{marginRight: '.5rem'}} onClick={() => this.setModal(this.state.isOpen)}>
-                  Close
-                </Button>
-                <Form.Item  name="field" noStyle >
-                  <Button type="primary" htmlType="submit">
-                    {this.state.status === "SUCCESS" ? 'Thanks!' : 'Submit'}
-                    {this.state.status === "ERROR" && 'Ooops! There was an error.'}
-                  </Button>
-                </Form.Item>
-              </Form.Item>
-            </Form>
+              <Input.TextArea  
+                className="formInput"
+                ref={this.formMessageRef}
+                placeHolder="Message"
+                name="message"
+              />
+              <Button className="formButton" htmlType="submit">Submit</Button>
+            </form>
           
           </div>
         </Modal>

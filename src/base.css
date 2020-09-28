@@ -32,12 +32,27 @@
 #footer {
   margin-top: 125vh;
 }
-
+/* Main Nav */
 .ant-menu-item > a {
   color: #fff !important;
 }
 .nav-phone-icon {
   color: #fff !important;
+}
+/* Contact Form */
+.contactForm {
+  width: 74%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formInput {
+  margin-bottom: 1rem !important;
+}
+.formButton {
+  margin: 0 auto !important;
+  color: #0d4f8c !important;
 }
 
 /* PRE-LOAD */
