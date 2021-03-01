@@ -42,7 +42,7 @@
     "react-visibility-sensor": "^5.1.1",
     "tailwindcss": "^1.6.0",
     "theme-ui": "^0.3.1",
-    "three": "^0.119.1"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
