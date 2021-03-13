@@ -80,9 +80,9 @@ class Header extends React.Component {
         <Menu.Item key="Home">
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item key="testominals">
+        {/* <Menu.Item key="testominals">
           <Link to="/projects">Projects</Link>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="contact">
           <Link to="/about">About Me</Link>
         </Menu.Item>

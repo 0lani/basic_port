@@ -70,11 +70,11 @@ const App = () => {
           </Suspense>
           )}/>
 
-          <Route path="/projects" render={props => (
+          {/* <Route path="/projects" render={props => (
             <Suspense fallback={renderLoading()}>
             <ProjectsComponent {...props} currentWindowSize={currentWindowSize}/>
           </Suspense>
-          )}/>
+          )}/> */}
 
           <Route path="/about" render={props => (
             <Suspense fallback={renderLoading()}>
