@@ -5,6 +5,7 @@ import landingImg from "../../../resources/images/cyberworks-landing-image.png"
 import VisibilitySensor from "react-visibility-sensor"
 import { Spring } from "react-spring/renderprops"
 import "../../../resources/less/homeBanner.less"
+import { Flex } from "theme-ui"
 
 const Banner = ({ windowSize }) => {
   const {width} = windowSize
@@ -57,7 +58,7 @@ const Banner = ({ windowSize }) => {
                       style={styles.colStyles}
                       className="banner-text-wrapper"
                     >
-                      <h2 style={{ ...props, marginBottom: 0 }}>
+                      <h2 style={{ ...props, marginBottom: 0, display: 'flex', justifyContent: "space-evenly"}}>
                         Javascript <p style={{ marginTop: 0 }}>Developer</p>
                       </h2>
                       <p style={{ fontSize: `1.1rem` }}>
