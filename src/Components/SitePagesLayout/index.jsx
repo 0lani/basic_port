@@ -9,7 +9,7 @@ const SitePagesLayout = ({ currentWindowSize }) => {
 
   return (
     <React.Fragment>
-      <main style={{background: '#fff'}}>
+      <main>
         <Banner />
         <Projects mobile={isMobile}/>
       </main>

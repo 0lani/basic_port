@@ -53,7 +53,7 @@ const App = () => {
   );
   
   const LandingComponent = lazy(() => import('./HomePageLayout'));
-  const ProjectsComponent = lazy(() => import('./SitePagesLayout'));
+  //const ProjectsComponent = lazy(() => import('./SitePagesLayout'));
   const AboutComponent = lazy(() => import('./AboutPagesLayout'));
   
   //TODO: make errorboundry for loading and a 404 page 

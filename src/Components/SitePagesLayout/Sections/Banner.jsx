@@ -1,8 +1,8 @@
 import React from "react"
 import {Icon} from "antd"
-import QueueAnim from "rc-queue-anim"
+
 //import BannerImage from "./BannerImage"
-import BoxScene from "./bannerContent/Scene"
+// import BoxScene from "./bannerContent/Scene"
 import "../../../resources/less/siteBanner.less"
 
 class Banner extends React.PureComponent {
@@ -20,7 +20,6 @@ class Banner extends React.PureComponent {
                 >
                   <p key="p"><em>PROJECTS</em></p>
                 </QueueAnim>
-                <BoxScene/>
               </div>
             </div>
           </div>

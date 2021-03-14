@@ -1,5 +1,6 @@
 import React from "react"
 import { Row, Col, Card} from 'antd';
+import BoxScene from "./Scene"
 import QueueAnim from "rc-queue-anim"
 import BannerImage from "./BannerImage"
 import selfie from "../../resources/images/selfie.png"
@@ -18,6 +19,13 @@ const Banner = ({mobile}) => {
   return (
     <React.Fragment>
       <section className="about-page about-banner-single">
+        <QueueAnim
+          delay={300}
+          ease="easeOutQuart"
+          className="background-image-three"
+        >
+          <BoxScene />
+        </QueueAnim>
         <div className={`about-layout-wrapper about-banner`}>
           <div className="about-layout">
             <Row gutter={[24, 0]} className={`about-banner-image-wrapper`}>
@@ -36,7 +44,7 @@ const Banner = ({mobile}) => {
                   </div>
 
                   <div className="site-card-border-less-wrapper">
-                  <Card className="about-title-mobile" title={title} bordered={false}>
+                  <Card className="about-title-background about title about-title-mobile" title={title} bordered={false}>
 
                   <p>I've spent the last few years working as a freelance developer that specializes in Javascript(front-end) and node(back-end) as the sole developer for a local start-up along with various other compaines in Las Vegas. 
                     I acquired project and time management skills, as well as the ability to communicate with new team members and clients while effectively meeting milestones and deadlines.</p>
