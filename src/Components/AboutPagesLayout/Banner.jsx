@@ -49,10 +49,8 @@ const Banner = ({mobile}) => {
                   <p>I've spent the last few years working as a freelance developer that specializes in Javascript(front-end) and node(back-end) as the sole developer for a local start-up along with various other compaines in Las Vegas. 
                     I acquired project and time management skills, as well as the ability to communicate with new team members and clients while effectively meeting milestones and deadlines.</p>
 
-                  <p>During my time working on a multitude of web Development projects I've had to learn other languages and app structures on the fly in order to effectively complete projects. Some of these skills include: React, Vue, Webpack, SQL, PHP, WordPress, jQuery, SASS, LESS, Bootstrap, along with other modern development necessities like the software development life cycle(agile, waterfall mainly). 
-                    I put all the skills I've learned over the years to good use on every project I work on.</p>
-
-                  <p>During these uncertain times I keep my own morale high by enjoying my free time with my dog Tika Masala and working with exciting new technologies like Three.js, WebGL, Blender among other fun animation tools.</p>
+                  <p>During my time working on a multitude of web Development projects I've had to learn other languages and app structures on the fly in order to effectively complete projects. Some of these skills include: React, Vue, Node, Postgresql along with experience using many other libraries and build tools.
+                  </p>
                   
                   <p>I am always available to discuss your project over the phone or via Skype. </p>
                   </Card>
