@@ -59,7 +59,7 @@ const Banner = ({ windowSize }) => {
                       className="banner-text-wrapper"
                     >
                       <h2 style={{ ...props, marginBottom: 0, display: 'flex', justifyContent: "space-evenly"}}>
-                        Javascript <p style={{ marginTop: 0 }}>Developer</p>
+                        Software <p style={{ marginTop: 0 }}>Developer</p>
                       </h2>
                       <p style={{ fontSize: `1.1rem` }}>
                         Harness the power of Modern Development
