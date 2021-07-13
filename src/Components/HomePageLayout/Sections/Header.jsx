@@ -119,9 +119,6 @@ class Header extends React.Component {
         ) : null}
         <Row className="logo-text-wrapper">
           <Col lg={4} md={10} sm={22} xs={24}>
-            <Link to="/" id="logo">
-              <span className="logo-text">Olonnye Taylor</span>
-            </Link>
           </Col>
           <Col lg={20} md={19} sm={0} xs={0}>
             {menuMode === `horizontal` ? menu : null}

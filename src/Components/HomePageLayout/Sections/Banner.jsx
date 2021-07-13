@@ -27,6 +27,7 @@ const Banner = ({ windowSize }) => {
       marginRight: isMobile ? horizontalMR : `40vw` 
     },
     colStyles: { 
+      transform: "skewY(-28deg)",
       marginTop: isMobile ? horizontalMT : `17vh`, 
       fontSize: isMobile ? `1rem` : `1.1rem` 
     },
