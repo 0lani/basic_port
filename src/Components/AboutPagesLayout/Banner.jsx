@@ -2,7 +2,7 @@ import React from "react"
 import { Row, Col, Card} from 'antd';
 import BoxScene from "./Scene"
 import QueueAnim from "rc-queue-anim"
-import BannerImage from "./BannerImage"
+//import BannerImage from "./BannerImage"
 import selfie from "../../resources/images/selfie.png"
 import "../../resources/less/about.less"
 import {github as Git} from "../../resources/icons"
@@ -57,7 +57,7 @@ const Banner = ({mobile}) => {
                   </div>
                 </div>
               </Col>
-              <Col className="mobile-banner-image" span={12}>
+              {/* <Col className="mobile-banner-image" span={12}>
                 <QueueAnim
                   delay={300}
                   ease="easeOutQuart"
@@ -65,7 +65,7 @@ const Banner = ({mobile}) => {
                 >
                   <BannerImage />
                 </QueueAnim>
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </div>
