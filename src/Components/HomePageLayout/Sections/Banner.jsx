@@ -58,10 +58,10 @@ const Banner = ({ windowSize }) => {
                       style={styles.colStyles}
                       className="banner-text-wrapper"
                     >
-                      <div style={{ ...props, marginBottom: 0, display: 'flex', justifyContent: "space-evenly"}}>
-                        <h1 className="typewriter">Software Dev</h1>
-                      </div>
-                      <p className="upwards" style={{ fontSize: `1.1rem` }}>
+                      <h2 style={{ ...props, marginBottom: 0, display: 'flex', justifyContent: "space-evenly"}}>
+                        Software <p style={{ marginTop: 0 }}>Developer</p>
+                      </h2>
+                      <p style={{ fontSize: `1.1rem` }}>
                         Harness the power of Modern Development
                       </p>
                       <span className="line" key="line" />
